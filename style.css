@@ -1,0 +1,149 @@
+/* --- Basic reset & variables --- */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+:root {
+  --bg: #0b0e14;
+  --surface: #121826;
+  --text: #e5e7eb;
+  --muted: #9aa4b2;
+  --accent: #7dd3fc;
+  --border: #263043;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #ffffff;
+    --surface: #f8fafc;
+    --text: #0f172a;
+    --muted: #475569;
+    --accent: #0ea5e9;
+    --border: #e2e8f0;
+  }
+}
+
+body {
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 80% -10%, rgba(125,211,252,0.15), transparent 60%), var(--bg);
+}
+
+/* --- Layout helpers --- */
+.container {
+  width: min(1100px, 92%);
+  margin-inline: auto;
+}
+
+.section { padding: 4rem 0; }
+h1, h2, h3 { line-height: 1.2; margin: 0 0 0.6rem; }
+h1 { font-size: clamp(2rem, 3vw + 1rem, 3rem); }
+h2 { font-size: clamp(1.5rem, 1.6vw + 1rem, 2rem); margin-bottom: 1rem; }
+.lead { font-size: 1.125rem; color: var(--muted); }
+.accent { color: var(--accent); }
+
+/* --- Header & nav --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: saturate(120%) blur(8px);
+  background: color-mix(in oklab, var(--bg), transparent 30%);
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+}
+.brand { font-weight: 700; color: var(--text); text-decoration: none; }
+.menu { display: flex; gap: 1rem; }
+.menu a { color: var(--muted); text-decoration: none; padding: 0.4rem 0.6rem; border-radius: 8px; }
+.menu a:hover, .menu a:focus { color: var(--text); background: var(--surface); outline: none; }
+
+.nav-toggle {
+  display: none;
+  font-size: 1.3rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.2rem 0.5rem;
+}
+@media (max-width: 720px) {
+  .menu { display: none; }
+  .menu.open { display: grid; gap: 0.4rem; padding: 0.6rem 0; }
+  .nav-toggle { display: inline-block; }
+}
+
+/* --- Hero --- */
+.hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 3rem 0 2rem;
+}
+.hero .avatar {
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  background: var(--surface);
+}
+.hero .cta { margin-top: 1rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+@media (max-width: 720px) {
+  .hero { grid-template-columns: 1fr; text-align: center; }
+  .hero .cta { justify-content: center; }
+}
+
+/* --- Buttons --- */
+.button {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 120ms ease, background 120ms ease;
+}
+.button:hover { transform: translateY(-1px); }
+.button.primary {
+  background: color-mix(in oklab, var(--accent), white 10%);
+  border-color: color-mix(in oklab, var(--accent), black 40%);
+  color: #0b1220;
+  font-weight: 600;
+}
+
+/* --- Facts list --- */
+.facts { list-style: none; padding: 0; margin: 0.6rem 0 0; display: grid; gap: 0.3rem; }
+.facts li { color: var(--muted); }
+
+/* --- Project cards --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+.card {
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--surface), transparent 10%);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.card img { display: block; width: 100%; height: auto; }
+.card-body { padding: 1rem; }
+.card h3 { margin: 0 0 0.25rem; }
+.card .links { margin: 0.4rem 0 0; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover { text-decoration: underline; }
+
+/* --- Contact & footer --- */
+.social { display: flex; gap: 0.8rem; list-style: none; padding: 0; margin: 0.4rem 0 0; flex-wrap: wrap; }
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+  padding: 1rem 0 3rem;
+  color: var(--muted);
+}
