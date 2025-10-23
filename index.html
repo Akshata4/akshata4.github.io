@@ -1,1 +1,206 @@
-(index.html code previously generated)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Akshata Madavi • Portfolio</title>
+  <meta name="description" content="Akshata Madavi – Data Engineer | ML Enthusiast | Building Scalable Data Solutions" />
+  <link rel="icon" href="assets/akshata.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <img class="avatar" src="assets/akshata.jpeg" alt="Akshata headshot" />
+      <div>
+        <h1 class="name">Akshata Madavi</h1>
+        <p class="tagline" id="typewriter" data-text="Data Engineer | ML Enthusiast | Building Scalable Data Solutions"></p>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-link active" data-tab="about">About</button>
+      <button class="nav-link" data-tab="projects">Projects</button>
+      <button class="nav-link" data-tab="til">Today I Learned</button>
+      <button class="nav-link" data-tab="experience">Experience</button>
+      <button class="nav-link" data-tab="education">Education</button>
+      <button class="nav-link" data-tab="skills">Certs & Skills</button>
+      <button class="nav-link" data-tab="resume">Resume</button>
+    </nav>
+
+    <div class="toggles">
+      <a class="social" href="https://www.linkedin.com/in/akshata-madavi/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="social" href="https://github.com/Akshata4" target="_blank" rel="noopener">GitHub</a>
+      <button id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- About -->
+    <section id="about" class="tab active">
+      <div class="about-grid">
+        <div>
+          <h2>About Me</h2>
+          <p>
+            Graduate student in Software Engineering (Data Science) at San Jose State University with industry experience in Python,
+            data engineering, and cloud technologies (GCP). I build scalable data pipelines, optimize performance, and collaborate
+            across teams to deliver impactful analytics.
+          </p>
+          <ul class="contact">
+            <li>📧 <a href="mailto:akshatamadavi@gmail.com">akshatamadavi@gmail.com</a></li>
+            <li>📱 <a href="tel:+14085901556">+1 (408) 590‑1556</a></li>
+            <li>🌐 <a href="https://github.com/Akshata4" target="_blank" rel="noopener">github.com/Akshata4</a></li>
+            <li>💼 <a href="https://www.linkedin.com/in/akshata-madavi/" target="_blank" rel="noopener">linkedin.com/in/akshata-madavi</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="tab">
+      <h2>Projects</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Philosophy‑based Recommender (LLMs + RAG)</h3>
+          <p>Personalized mental‑wellness recommendations using LLMs and RAG over curated philosophical texts.
+             Focus on prompt design, retrieval quality, and safety.</p>
+          <div class="meta"><span>LLMs</span><span>RAG</span><span>Python</span></div>
+          <a class="btn" href="#" aria-disabled="true">Repo coming soon</a>
+        </article>
+        <article class="card">
+          <h3>NYC Taxi Fare Prediction (30M rows)</h3>
+          <p>Distributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.</p>
+          <div class="meta"><span>PySpark</span><span>MLflow</span><span>GCP</span></div>
+          <a class="btn" href="#" aria-disabled="true">Demo link (placeholder)</a>
+        </article>
+        <article class="card">
+          <h3>GCP Data Pipelines @ Scale</h3>
+          <p>Event‑driven pipelines to migrate on‑prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.</p>
+          <div class="meta"><span>Dataflow</span><span>BigQuery</span><span>Workflows</span></div>
+          <a class="btn" href="#" aria-disabled="true">Case study (placeholder)</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- TIL -->
+    <section id="til" class="tab">
+      <h2>Today I Learned</h2>
+      <p class="muted">Auto‑populates from recent GitHub repos containing “TIL”. Update any time by adding/editing repos.</p>
+      <div id="tilList" class="cards"></div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="tab">
+      <h2>Experience</h2>
+      <ol class="timeline">
+        <li>
+          <div class="time">May 2023 – Mar 2025</div>
+          <div class="content">
+            <h3>Senior Data Engineer • LTIMindtree — Pune, India</h3>
+            <ul>
+              <li>Migrated on‑prem DBs to BigQuery for near real‑time analytics (~10M records).</li>
+              <li>Event‑driven pipeline processed 30GB inconsistent Excel data in &lt;10 minutes with parallelism.</li>
+              <li>Production orchestration with Google Workflows.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="time">Aug 2021 – Apr 2023</div>
+          <div class="content">
+            <h3>Data Engineer • AI Adventures — Pune, India</h3>
+            <ul>
+              <li>Migrated Moodle to MySQL; enabled BI views driving +20% revenue.</li>
+              <li>Improved insights on sales, retention, and curriculum performance.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="time">Jun 2018 – May 2021</div>
+          <div class="content">
+            <h3>Data Engineer • STL — Pune, India</h3>
+            <ul>
+              <li>Near real‑time pipelines from Oracle/SAP/Salesforce to BigQuery (~1TB processed).</li>
+              <li>Built Tableau reports for scrap detection and DOE analysis.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="tab">
+      <h2>Education</h2>
+      <div class="edu-grid">
+        <article class="edu-card">
+          <h3>San Jose State University (SJSU)</h3>
+          <p>MS, Software Engineering (Data Science) • Aug 2025 – Present</p>
+          <p class="muted">Courses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms</p>
+        </article>
+        <article class="edu-card">
+          <h3>College of Engineering Pune (COEP)</h3>
+          <p>BS, Computer Engineering • Aug 2014 – May 2018</p>
+          <p class="muted">Courses: Programming, Databases, Algorithms, Software Design</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills & Certs -->
+    <section id="skills" class="tab">
+      <h2>Certifications & Skills</h2>
+      <div class="skills-grid">
+        <div>
+          <h3>Languages</h3>
+          <p>Python, SQL</p>
+        </div>
+        <div>
+          <h3>ML & Analytics</h3>
+          <p>PySpark ML, scikit‑learn, XGBoost, Tableau</p>
+        </div>
+        <div>
+          <h3>Warehouses & Databases</h3>
+          <p>BigQuery, MySQL, ClickHouse, Presto</p>
+        </div>
+        <div>
+          <h3>Data Pipelines & Cloud</h3>
+          <p>Dataflow, Cloud Run, Cloud Storage, Compute Engine, Spark, Kafka, Pub/Sub</p>
+        </div>
+        <div>
+          <h3>Orchestration</h3>
+          <p>Workflows, Cloud Composer, Airflow</p>
+        </div>
+        <div>
+          <h3>Certifications</h3>
+          <ul>
+            <li>Intro to Data Science in Python (Coursera)</li>
+            <li>Exploring & Preparing Data with BigQuery (Coursera)</li>
+            <li>Creating BigQuery Datasets & Visualizing Insights (Google Cloud)</li>
+            <li>Achieving Advanced Insights with BigQuery (Coursera)</li>
+            <li>Applying ML to Data with GCP (Coursera)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume -->
+    <section id="resume" class="tab">
+      <h2>Resume</h2>
+      <div class="resume-actions">
+        <a class="btn" href="assets/Resume_Akshata_Data_Engineer.pdf" download>Download PDF</a>
+        <span class="muted">Replace this file in <code>/assets/</code> to update.</span>
+      </div>
+      <div class="pdf-embed">
+        <embed src="assets/Resume_Akshata_Data_Engineer.pdf" type="application/pdf" />
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Akshata Madavi • Built with HTML/CSS/JS • Hosted on GitHub Pages</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
