@@ -1,9 +1,9 @@
 /* style.css - Minimalist pastel theme with dark mode */
 .avatar {
-  width: 150px;         /* Reduce width */
-  height: 150px;        /* Keep it square */
-  border-radius: 50%;   /* Make it circular */
-  object-fit: cover;    /* Crop nicely */
+  width: 120px;          /* smaller size */
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
   border: 3px solid var(--accent2);
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
@@ -19,11 +19,12 @@ body.dark {
   --accent: #c084fc;
   --accent2: #ffb86b;
 }
+/* Fix for pastel background */
 body {
-  font-family: 'Inter', sans-serif;
-  margin: 0;
   background: var(--bg);
   color: var(--text);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
   transition: background 0.3s, color 0.3s;
 }
 .site-header, footer {
@@ -34,18 +35,27 @@ body {
   background: var(--accent);
   color: #fff;
 }
+/* Nav links cleanup */
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
 .nav button {
-  background: none;
+  background: var(--accent2);
   border: none;
-  margin: 0 0.5rem;
+  border-radius: 20px;
   padding: 0.5rem 1rem;
+  font-weight: 500;
   cursor: pointer;
-  border-radius: 8px;
+  transition: background 0.2s;
 }
 .nav button.active {
-  background: var(--accent2);
-  color: #000;
+  background: #fff;
+  color: var(--text);
 }
+
 .tab { display: none; padding: 2rem; }
 .tab.active { display: block; }
 .cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
@@ -68,4 +78,17 @@ body {
   width: 100%;
   height: 80vh;
   border: none;
+}
+/* Center main content and limit width */
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Brand section (photo + name) */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
 }
