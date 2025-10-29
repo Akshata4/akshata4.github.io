@@ -116,10 +116,22 @@ function fetchLeetCodeStats() {
   const container = document.getElementById('leetcode-stats');
   // Hardcoded stats - update with real numbers from https://leetcode.com/u/akshatamadavi/
   container.innerHTML = `
-    <p><strong>Total Solved:</strong> 50</p>
-    <p><strong>Easy:</strong> 30</p>
-    <p><strong>Medium:</strong> 15</p>
-    <p><strong>Hard:</strong> 5</p>
+    <div class="stat-item">
+      <span class="stat-label">Total Solved:</span>
+      <span class="stat-value">97</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Easy:</span>
+      <span class="stat-value">71/909</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Medium:</span>
+      <span class="stat-value">26/1942</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Hard:</span>
+      <span class="stat-value">0/879</span>
+    </div>
   `;
 }
 
