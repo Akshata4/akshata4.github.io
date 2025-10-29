@@ -1,131 +1,131 @@
+// script.js - handles tabs, dark mode, typewriter, and TIL fetching
 
+// ----- Tab Navigation -----
+const tabs = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('.tab');
 
+tabs.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabs.forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    sections.forEach(s => s.classList.remove('active'));
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    const activeSection = document.getElementById(btn.dataset.tab);
+    activeSection.classList.add('active');
+    // Trigger reflow for animation
+    activeSection.offsetHeight;
+  });
 
-consttabs=document.querySelectorAll('.nav-link');
-constsections=document.querySelectorAll('.tab');
-
-tabs.forEach(btn=>{
-btn.addEventListener('click',()=>{
-tabs.forEach(b=>{
-b.classList.remove('active');
-b.setAttribute('aria-selected','false');
-});
-sections.forEach(s=>s.classList.remove('active'));
-btn.classList.add('active');
-btn.setAttribute('aria-selected','true');
-constactiveSection=document.getElementById(btn.dataset.tab);
-activeSection.classList.add('active');
-
-activeSection.offsetHeight;
-});
-
-
-btn.addEventListener('keydown',(e)=>{
-if(e.key==='Enter'||e.key===''){
-e.preventDefault();
-btn.click();
-}
-});
-});
-
-
-consttoggle=document.getElementById('themeToggle');
-toggle.addEventListener('click',()=>{
-document.body.classList.toggle('dark');
-toggle.setAttribute('aria-pressed',document.body.classList.contains('dark'));
+  // Keyboard navigation
+  btn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      btn.click();
+    }
+  });
 });
 
+// ----- Dark Mode Toggle -----
+const toggle = document.getElementById('themeToggle');
+toggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  toggle.setAttribute('aria-pressed', document.body.classList.contains('dark'));
+});
 
-consttw=document.getElementById('typewriter');
-consttxt=tw.dataset.text;
-leti=0;
-functiontype(){
-if(i<txt.length){
-tw.textContent+=txt.charAt(i);
-i++;
-setTimeout(type,70);
-}
+// ----- Typewriter Effect -----
+const tw = document.getElementById('typewriter');
+const txt = tw.dataset.text;
+let i = 0;
+function type() {
+  if (i < txt.length) {
+    tw.textContent += txt.charAt(i);
+    i++;
+    setTimeout(type, 70);
+  }
 }
 type();
 
+// ----- Footer Year -----
+document.getElementById('year').textContent = new Date().getFullYear();
 
-document.getElementById('year').textContent=newDate().getFullYear();
+// ----- TIL Section: Fetch from Repos + Commits -----
+async function fetchTIL() {
+  const tilList = document.getElementById('tilList');
+  tilList.innerHTML = '<p>Loading TILs...</p>';
 
+  try {
+    // Step 1: Fetch all repos
+    const repoRes = await fetch('https://api.github.com/users/Akshata4/repos');
+    const repos = await repoRes.json();
 
-asyncfunctionfetchTIL(){
-consttilList=document.getElementById('tilList');
-tilList.innerHTML='<p>LoadingTILs...</p>';
+    tilList.innerHTML = '';
 
-try{
+    // Step 2: Repos with "TIL" in name/description
+    const tilRepos = repos.filter(r =>
+      r.name.toLowerCase().includes('til') ||
+      (r.description && r.description.toLowerCase().includes('til'))
+    );
 
-constrepoRes=awaitfetch('https:
-constrepos=awaitrepoRes.json();
+    tilRepos.forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>${r.name}</h3>
+        <p>${r.description || ''}</p>
+        <a class='btn' href='${r.html_url}' target='_blank'>View Repo</a>
+      `;
+      tilList.appendChild(card);
+    });
 
-tilList.innerHTML='';
+    // Step 3: Search for "TIL" commits across recent repos (limit for rate safety)
+    for (const repo of repos.slice(0, 10)) {
+      const commitsRes = await fetch(`https://api.github.com/repos/Akshata4/${repo.name}/commits`);
+      const commits = await commitsRes.json();
 
+      commits
+        .filter(c => c.commit.message.toLowerCase().includes('til'))
+        .slice(0, 3)
+        .forEach(c => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <h3>TIL Commit • ${repo.name}</h3>
+            <p>${c.commit.message}</p>
+            <a class='btn' href='${c.html_url}' target='_blank'>View Commit</a>
+          `;
+          tilList.appendChild(card);
+        });
+    }
 
-consttilRepos=repos.filter(r=>
-r.name.toLowerCase().includes('til')||
-(r.description&&r.description.toLowerCase().includes('til'))
-);
-
-tilRepos.forEach(r=>{
-constcard=document.createElement('div');
-card.className='card';
-card.innerHTML=`
-<h3>${r.name}</h3>
-<p>${r.description||''}</p>
-<aclass='btn'href='${r.html_url}'target='_blank'>ViewRepo</a>
-`;
-tilList.appendChild(card);
-});
-
-
-for(constrepoofrepos.slice(0,10)){
-constcommitsRes=awaitfetch(`https:
-constcommits=awaitcommitsRes.json();
-
-commits
-.filter(c=>c.commit.message.toLowerCase().includes('til'))
-.slice(0,3)
-.forEach(c=>{
-constcard=document.createElement('div');
-card.className='card';
-card.innerHTML=`
-<h3>TILCommit•${repo.name}</h3>
-<p>${c.commit.message}</p>
-<aclass='btn'href='${c.html_url}'target='_blank'>ViewCommit</a>
-`;
-tilList.appendChild(card);
-});
-}
-
-if(tilList.children.length===0){
-tilList.innerHTML='<p>NoTILreposorcommitsfoundyet🚀</p>';
-}
-}catch(err){
-console.error('ErrorfetchingTILs:',err);
-tilList.innerHTML='<p>ErrorloadingTILs.Pleasetryagainlater.</p>';
-}
+    if (tilList.children.length === 0) {
+      tilList.innerHTML = '<p>No TIL repos or commits found yet 🚀</p>';
+    }
+  } catch (err) {
+    console.error('Error fetching TILs:', err);
+    tilList.innerHTML = '<p>Error loading TILs. Please try again later.</p>';
+  }
 }
 
 fetchTIL();
 
-
-functionfetchLeetCodeStats(){
-constcontainer=document.getElementById('leetcode-stats');
-
-container.innerHTML=`
-<p><strong>TotalSolved:</strong>50</p>
-<p><strong>Easy:</strong>30</p>
-<p><strong>Medium:</strong>15</p>
-<p><strong>Hard:</strong>5</p>
-`;
+// ----- Coding Stats -----
+function fetchLeetCodeStats() {
+  const container = document.getElementById('leetcode-stats');
+  // Hardcoded stats - update with real numbers from https://leetcode.com/u/akshatamadavi/
+  container.innerHTML = `
+    <p><strong>Total Solved:</strong> 50</p>
+    <p><strong>Easy:</strong> 30</p>
+    <p><strong>Medium:</strong> 15</p>
+    <p><strong>Hard:</strong> 5</p>
+  `;
 }
 
-functionloadCodingStats(){
-fetchLeetCodeStats();
+function loadCodingStats() {
+  fetchLeetCodeStats();
 }
 
-
-document.querySelector('[data-tab="coding"]').addEventListener('click',loadCodingStats);
+// Load stats when coding tab is clicked
+document.querySelector('[data-tab="coding"]').addEventListener('click', loadCodingStats);
