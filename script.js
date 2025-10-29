@@ -6,10 +6,22 @@ const sections = document.querySelectorAll('.tab');
 
 tabs.forEach(btn => {
   btn.addEventListener('click', () => {
-    tabs.forEach(b => b.classList.remove('active'));
+    tabs.forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
     sections.forEach(s => s.classList.remove('active'));
     btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
     document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+
+  // Keyboard navigation
+  btn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      btn.click();
+    }
   });
 });
 
@@ -17,6 +29,7 @@ tabs.forEach(btn => {
 const toggle = document.getElementById('themeToggle');
 toggle.addEventListener('click', () => {
   document.body.classList.toggle('dark');
+  toggle.setAttribute('aria-pressed', document.body.classList.contains('dark'));
 });
 
 // ----- Typewriter Effect -----
@@ -94,3 +107,22 @@ async function fetchTIL() {
 }
 
 fetchTIL();
+
+// ----- Coding Stats -----
+function fetchLeetCodeStats() {
+  const container = document.getElementById('leetcode-stats');
+  // Hardcoded stats - update with real numbers from https://leetcode.com/u/akshatamadavi/
+  container.innerHTML = `
+    <p><strong>Total Solved:</strong> 50</p>
+    <p><strong>Easy:</strong> 30</p>
+    <p><strong>Medium:</strong> 15</p>
+    <p><strong>Hard:</strong> 5</p>
+  `;
+}
+
+function loadCodingStats() {
+  fetchLeetCodeStats();
+}
+
+// Load stats when coding tab is clicked
+document.querySelector('[data-tab="coding"]').addEventListener('click', loadCodingStats);

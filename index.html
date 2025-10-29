@@ -15,52 +15,104 @@
   <header class="site-header">
     <div class="brand">
       <img class="avatar" src="assets/akshata.jpeg" alt="Akshata headshot" />
-      <div>
-        <h1 class="name">Akshata Madavi</h1>
-        <p class="tagline" id="typewriter" data-text="Data Engineer | ML Enthusiast | Building Scalable Data Solutions"></p>
-      </div>
+       <div>
+         <h1 class="name">Akshata Madavi</h1>
+       </div>
     </div>
 
-    <nav class="nav">
-      <button class="nav-link active" data-tab="about">About</button>
-      <button class="nav-link" data-tab="projects">Projects</button>
-      <button class="nav-link" data-tab="til">Today I Learned</button>
-      <button class="nav-link" data-tab="experience">Experience</button>
-      <button class="nav-link" data-tab="education">Education</button>
-      <button class="nav-link" data-tab="skills">Certs & Skills</button>
-      <button class="nav-link" data-tab="resume">Resume</button>
-    </nav>
+     <nav class="nav" role="tablist" aria-label="Portfolio sections">
+       <button class="nav-link active" data-tab="about" role="tab" aria-selected="true" aria-controls="about">About</button>
+       <button class="nav-link" data-tab="experience" role="tab" aria-selected="false" aria-controls="experience">Experience</button>
+       <button class="nav-link" data-tab="education" role="tab" aria-selected="false" aria-controls="education">Education</button>
+       <button class="nav-link" data-tab="projects" role="tab" aria-selected="false" aria-controls="projects">Projects</button>
+       <button class="nav-link" data-tab="coding" role="tab" aria-selected="false" aria-controls="coding">Coding Stats</button>
+       <button class="nav-link" data-tab="resume" role="tab" aria-selected="false" aria-controls="resume">Resume</button>
+     </nav>
 
-    <div class="toggles">
-      <a class="social" href="https://www.linkedin.com/in/akshata-madavi/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="social" href="https://github.com/Akshata4" target="_blank" rel="noopener">GitHub</a>
-      <button id="themeToggle" aria-label="Toggle dark mode">🌓</button>
-    </div>
+     <div class="toggles">
+       <a class="social linkedin" href="https://www.linkedin.com/in/akshata-madavi/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+         LinkedIn
+       </a>
+       <a class="social github" href="https://github.com/Akshata4" target="_blank" rel="noopener" aria-label="GitHub profile">
+         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+         GitHub
+       </a>
+       <button id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false">🌓</button>
+     </div>
   </header>
 
   <main>
-    <!-- About -->
-    <section id="about" class="tab active">
-      <div class="about-grid">
-        <div>
-          <h2>About Me</h2>
-          <p>
-            Graduate student in Software Engineering (Data Science) at San Jose State University with industry experience in Python,
-            data engineering, and cloud technologies (GCP). I build scalable data pipelines, optimize performance, and collaborate
-            across teams to deliver impactful analytics.
-          </p>
-          <ul class="contact">
-            <li>📧 <a href="mailto:akshatamadavi@gmail.com">akshatamadavi@gmail.com</a></li>
-            <li>📱 <a href="tel:+14085901556">+1 (408) 590‑1556</a></li>
-            <li>🌐 <a href="https://github.com/Akshata4" target="_blank" rel="noopener">github.com/Akshata4</a></li>
-            <li>💼 <a href="https://www.linkedin.com/in/akshata-madavi/" target="_blank" rel="noopener">linkedin.com/in/akshata-madavi</a></li>
-          </ul>
-        </div>
-      </div>
-    </section>
+     <!-- About -->
+     <section id="about" class="tab active" role="tabpanel" aria-labelledby="about-tab">
+       <div class="about-hero">
+         <div class="hero-content">
+           <h1>Akshata Madavi</h1>
+           <p class="hero-tagline">Building Scalable Data Solutions</p>
+           <p class="hero-subtitle">Data Engineer | AI/ML Enthusiast | Graduate Student at San Jose State University</p>
+           <p class="hero-description">
+             Currently pursuing MS in Software Engineering with Data Science focus. Previously worked as Senior Data Engineer at LTIMindtree, building scalable pipelines and optimizing analytics. Passionate about leveraging AI/ML for impactful data solutions.
+           </p>
+           <div class="hero-links">
+             <a href="https://www.linkedin.com/in/akshata-madavi/" target="_blank" rel="noopener" class="hero-link">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+               LinkedIn
+             </a>
+             <a href="https://github.com/Akshata4" target="_blank" rel="noopener" class="hero-link">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+               GitHub
+             </a>
+             <a href="mailto:akshatamadavi@gmail.com" class="hero-link">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+               Email
+             </a>
+           </div>
+           <a class="btn resume-btn" href="assets/Resume_Akshata_Data_Engineer.pdf" download>View Resume</a>
+         </div>
+         <div class="hero-image">
+           <img src="assets/akshata.jpeg" alt="Akshata Madavi" class="profile-img" />
+         </div>
+       </div>
+         <div class="about-section">
+           <h2>Key Skills</h2>
+           <div class="skills-highlights">
+             <div class="skill-item">
+               <h3>Languages</h3>
+               <p>Python, SQL</p>
+             </div>
+             <div class="skill-item">
+               <h3>Technologies</h3>
+               <p>PySpark, GCP, BigQuery, Dataflow</p>
+             </div>
+             <div class="skill-item">
+               <h3>Tools</h3>
+               <p>MLflow, Tableau, Git</p>
+             </div>
+           </div>
+         </div>
+         <div class="about-section">
+           <h2>Highlights</h2>
+           <ul class="highlights-list">
+             <li>5+ years of experience in data engineering and analytics</li>
+             <li>Processed 1TB+ data across multiple projects</li>
+             <li>Skilled in GCP, PySpark, and ML pipelines</li>
+             <li>Collaborated with cross-functional teams to deliver scalable solutions</li>
+           </ul>
+         </div>
+         <div class="about-section">
+           <h2>Get In Touch</h2>
+           <div class="contact-grid">
+             <a href="mailto:akshatamadavi@gmail.com" class="contact-link">📧 akshatamadavi@gmail.com</a>
+             <a href="tel:+14085901556" class="contact-link">📱 +1 (408) 590-1556</a>
+             <a href="https://github.com/Akshata4" target="_blank" rel="noopener" class="contact-link">🌐 GitHub</a>
+             <a href="https://www.linkedin.com/in/akshata-madavi/" target="_blank" rel="noopener" class="contact-link">💼 LinkedIn</a>
+           </div>
+         </div>
+       </div>
+     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="tab">
+     <!-- Projects -->
+     <section id="projects" class="tab" role="tabpanel" aria-labelledby="projects-tab">
       <h2>Projects</h2>
       <div class="cards">
         <article class="card">
@@ -85,116 +137,122 @@
       </div>
     </section>
 
-    <!-- TIL -->
-    <section id="til" class="tab">
-      <h2>Today I Learned</h2>
-      <p class="muted">Auto‑populates from recent GitHub repos containing “TIL”. Update any time by adding/editing repos.</p>
-      <div id="tilList" class="cards"></div>
-    </section>
+     <!-- Experience -->
+     <section id="experience" class="tab" role="tabpanel" aria-labelledby="experience-tab">
+       <h2>Experience</h2>
+       <div class="experience-list">
+         <div class="experience-item">
+           <img src="https://companieslogo.com/img/orig/LTIM.NS-dea59dc6.png?t=1720244492" alt="LTIMindtree" class="company-logo" />
+           <div class="experience-content">
+             <h3>Senior Data Engineer @ LTIMindtree</h3>
+             <h4>May 2023 – Mar 2025 | Pune, India</h4>
+             <p>Migrated on-prem DBs to BigQuery for near real-time analytics (~10M records). Built event-driven pipelines processing 30GB inconsistent Excel data in <10 minutes with parallelism. Managed production orchestration with Google Workflows.</p>
+           </div>
+         </div>
+         <div class="experience-item">
+           <img src="https://th.bing.com/th/id/OIP.SLgH1cNG-Go12W0VTWKpzwAAAA?w=133&h=150&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="AI Adventures" class="company-logo" />
+           <div class="experience-content">
+             <h3>Data Engineer @ AI Adventures</h3>
+             <h4>Aug 2021 – Apr 2023 | Pune, India</h4>
+             <p>Migrated Moodle to MySQL; enabled BI views driving +20% revenue. Improved insights on sales, retention, and curriculum performance through data engineering solutions.</p>
+           </div>
+         </div>
+         <div class="experience-item">
+           <img src="https://mma.prnewswire.com/media/876464/Sterlite_Technologies_STL_New_Logo.jpg?p=publish" alt="STL" class="company-logo" />
+           <div class="experience-content">
+             <h3>Data Engineer @ STL</h3>
+             <h4>Jun 2018 – May 2021 | Pune, India</h4>
+             <p>Developed near real-time pipelines from Oracle/SAP/Salesforce to BigQuery (~1TB processed). Built Tableau reports for scrap detection and DOE analysis to support manufacturing operations.</p>
+           </div>
+         </div>
+       </div>
+     </section>
 
-    <!-- Experience -->
-    <section id="experience" class="tab">
-      <h2>Experience</h2>
-      <ol class="timeline">
-        <li>
-          <div class="time">May 2023 – Mar 2025</div>
-          <div class="content">
-            <h3>Senior Data Engineer • LTIMindtree — Pune, India</h3>
-            <ul>
-              <li>Migrated on‑prem DBs to BigQuery for near real‑time analytics (~10M records).</li>
-              <li>Event‑driven pipeline processed 30GB inconsistent Excel data in &lt;10 minutes with parallelism.</li>
-              <li>Production orchestration with Google Workflows.</li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <div class="time">Aug 2021 – Apr 2023</div>
-          <div class="content">
-            <h3>Data Engineer • AI Adventures — Pune, India</h3>
-            <ul>
-              <li>Migrated Moodle to MySQL; enabled BI views driving +20% revenue.</li>
-              <li>Improved insights on sales, retention, and curriculum performance.</li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <div class="time">Jun 2018 – May 2021</div>
-          <div class="content">
-            <h3>Data Engineer • STL — Pune, India</h3>
-            <ul>
-              <li>Near real‑time pipelines from Oracle/SAP/Salesforce to BigQuery (~1TB processed).</li>
-              <li>Built Tableau reports for scrap detection and DOE analysis.</li>
-            </ul>
-          </div>
-        </li>
-      </ol>
-    </section>
+     <!-- Education -->
+     <section id="education" class="tab" role="tabpanel" aria-labelledby="education-tab">
+       <h2>Education</h2>
+       <div class="education-list">
+         <div class="education-item">
+           <img src="https://th.bing.com/th/id/OIP.D8Gets2ZgfmA1OgI1L8e7QHaEz?w=249&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="San Jose State University" class="company-logo" />
+           <div class="education-content">
+             <h3>San Jose State University (SJSU)</h3>
+             <h4>MS, Software Engineering (Data Science) • Aug 2025 – Present</h4>
+             <p>Courses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms</p>
+           </div>
+         </div>
+         <div class="education-item">
+           <img src="https://tse3.mm.bing.net/th/id/OIP.NIIe78yaHSqGdwNV547D0QHaIY?rs=1&pid=ImgDetMain&o=7&rm=3" alt="College of Engineering Pune" class="company-logo" />
+           <div class="education-content">
+             <h3>College of Engineering Pune (COEP)</h3>
+             <h4>BS, Computer Engineering • Aug 2014 – May 2018</h4>
+             <p>Courses: Programming, Databases, Algorithms, Software Design</p>
+           </div>
+         </div>
+       </div>
+     </section>
 
-    <!-- Education -->
-    <section id="education" class="tab">
-      <h2>Education</h2>
-      <div class="edu-grid">
-        <article class="edu-card">
-          <h3>San Jose State University (SJSU)</h3>
-          <p>MS, Software Engineering (Data Science) • Aug 2025 – Present</p>
-          <p class="muted">Courses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms</p>
-        </article>
-        <article class="edu-card">
-          <h3>College of Engineering Pune (COEP)</h3>
-          <p>BS, Computer Engineering • Aug 2014 – May 2018</p>
-          <p class="muted">Courses: Programming, Databases, Algorithms, Software Design</p>
-        </article>
-      </div>
-    </section>
+     <!-- Coding Stats -->
+     <section id="coding" class="tab" role="tabpanel" aria-labelledby="coding-tab">
+       <h2>Coding Stats</h2>
+       <div class="coding-grid">
+         <div class="coding-platform">
+           <div class="platform-header">
+             <img src="https://assets.leetcode.com/static_assets/public/webpack_bundles/images/logo-dark.e99485d9b.svg" alt="LeetCode" class="platform-logo" />
+             <h3>LeetCode</h3>
+           </div>
+           <h4>Problem Solving Stats</h4>
+           <div id="leetcode-stats" class="stats-container">
+             <div class="stat-item">
+               <span class="stat-label">Total Solved:</span>
+               <span class="stat-value">50</span>
+             </div>
+             <div class="stat-item">
+               <span class="stat-label">Easy:</span>
+               <span class="stat-value">30 🟢</span>
+             </div>
+             <div class="stat-item">
+               <span class="stat-label">Medium:</span>
+               <span class="stat-value">15 🟡</span>
+             </div>
+             <div class="stat-item">
+               <span class="stat-label">Hard:</span>
+               <span class="stat-value">5 🔴</span>
+             </div>
+           </div>
+           <a class="btn" href="https://leetcode.com/u/akshatamadavi/" target="_blank" rel="noopener">View Profile</a>
+         </div>
+         <div class="coding-platform">
+           <div class="platform-header">
+             <img src="https://www.hackerrank.com/wp-content/uploads/2018/08/hackerrank_logo.png" alt="HackerRank" class="platform-logo" />
+             <h3>HackerRank</h3>
+           </div>
+           <h4>Certification Stats</h4>
+           <div class="stats-container">
+             <div class="stat-item">
+               <span class="stat-label">Python (Basic):</span>
+               <span class="stat-value">🏅 Certified</span>
+             </div>
+             <div class="stat-item">
+               <span class="stat-label">SQL (Basic):</span>
+               <span class="stat-value">🏅 Certified</span>
+             </div>
+           </div>
+           <a class="btn" href="https://www.hackerrank.com/profile/akshatamadavi" target="_blank" rel="noopener">View Profile</a>
+         </div>
+       </div>
+     </section>
 
-    <!-- Skills & Certs -->
-    <section id="skills" class="tab">
-      <h2>Certifications & Skills</h2>
-      <div class="skills-grid">
-        <div>
-          <h3>Languages</h3>
-          <p>Python, SQL</p>
-        </div>
-        <div>
-          <h3>ML & Analytics</h3>
-          <p>PySpark ML, scikit‑learn, XGBoost, Tableau</p>
-        </div>
-        <div>
-          <h3>Warehouses & Databases</h3>
-          <p>BigQuery, MySQL, ClickHouse, Presto</p>
-        </div>
-        <div>
-          <h3>Data Pipelines & Cloud</h3>
-          <p>Dataflow, Cloud Run, Cloud Storage, Compute Engine, Spark, Kafka, Pub/Sub</p>
-        </div>
-        <div>
-          <h3>Orchestration</h3>
-          <p>Workflows, Cloud Composer, Airflow</p>
-        </div>
-        <div>
-          <h3>Certifications</h3>
-          <ul>
-            <li>Intro to Data Science in Python (Coursera)</li>
-            <li>Exploring & Preparing Data with BigQuery (Coursera)</li>
-            <li>Creating BigQuery Datasets & Visualizing Insights (Google Cloud)</li>
-            <li>Achieving Advanced Insights with BigQuery (Coursera)</li>
-            <li>Applying ML to Data with GCP (Coursera)</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Resume -->
-    <section id="resume" class="tab">
-      <h2>Resume</h2>
-      <div class="resume-actions">
-        <a class="btn" href="assets/Resume_Akshata_Data_Engineer.pdf" download>Download PDF</a>
-        <span class="muted">Replace this file in <code>/assets/</code> to update.</span>
-      </div>
-      <div class="pdf-embed">
-        <embed src="assets/Resume_Akshata_Data_Engineer.pdf" type="application/pdf" />
-      </div>
-    </section>
+     <!-- Resume -->
+     <section id="resume" class="tab" role="tabpanel" aria-labelledby="resume-tab">
+       <h2>Resume</h2>
+       <div class="resume-actions">
+         <a class="btn" href="assets/Resume_Akshata_Data_Engineer.pdf" download>Download PDF</a>
+         <span class="muted">Replace this file in <code>/assets/</code> to update.</span>
+       </div>
+       <div class="pdf-embed">
+         <embed src="assets/Resume_Akshata_Data_Engineer.pdf" type="application/pdf" />
+       </div>
+     </section>
   </main>
 
   <footer class="site-footer">
