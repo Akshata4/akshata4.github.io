@@ -35,6 +35,8 @@ toggle.addEventListener('click', () => {
   toggle.setAttribute('aria-pressed', document.body.classList.contains('dark'));
 });
 
+
+
 // ----- Typewriter Effect -----
 const tw = document.getElementById('typewriter');
 const txt = tw.dataset.text;
