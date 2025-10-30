@@ -4,35 +4,60 @@
 const tabs = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.tab');
 
-tabs.forEach(btn => {
-  btn.addEventListener('click', () => {
-    tabs.forEach(b => {
-      b.classList.remove('active');
-      b.setAttribute('aria-selected', 'false');
-    });
-    sections.forEach(s => s.classList.remove('active'));
-    btn.classList.add('active');
-    btn.setAttribute('aria-selected', 'true');
-    const activeSection = document.getElementById(btn.dataset.tab);
-    activeSection.classList.add('active');
-    // Trigger reflow for animation
-    activeSection.offsetHeight;
-  });
-
-  // Keyboard navigation
-  btn.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      btn.click();
+function setActiveTab() {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (pageYOffset >= sectionTop - sectionHeight / 3) {
+      current = section.getAttribute('id');
     }
   });
+  tabs.forEach(tab => {
+    tab.classList.remove('active');
+    tab.setAttribute('aria-selected', 'false');
+    if (tab.getAttribute('href') === '#' + current) {
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+    }
+  });
+}
+
+window.addEventListener('scroll', setActiveTab);
+setActiveTab(); // Set initial active tab
+
+// ----- Scroll Animation -----
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+sections.forEach(section => {
+  observer.observe(section);
 });
 
 // ----- Dark Mode Toggle -----
 const toggle = document.getElementById('themeToggle');
+
+// Load saved theme
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark');
+  toggle.setAttribute('aria-pressed', 'true');
+}
+
 toggle.addEventListener('click', () => {
   document.body.classList.toggle('dark');
-  toggle.setAttribute('aria-pressed', document.body.classList.contains('dark'));
+  const isDark = document.body.classList.contains('dark');
+  toggle.setAttribute('aria-pressed', isDark);
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
 

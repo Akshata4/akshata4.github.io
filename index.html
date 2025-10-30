@@ -34,14 +34,14 @@
         </div>
     </div>
 
-     <nav class="nav" role="tablist" aria-label="Portfolio sections">
-       <button class="nav-link active" data-tab="about" role="tab" aria-selected="true" aria-controls="about">About</button>
-       <button class="nav-link" data-tab="experience" role="tab" aria-selected="false" aria-controls="experience">Experience</button>
-       <button class="nav-link" data-tab="education" role="tab" aria-selected="false" aria-controls="education">Education</button>
-       <button class="nav-link" data-tab="projects" role="tab" aria-selected="false" aria-controls="projects">Projects</button>
-       <button class="nav-link" data-tab="coding" role="tab" aria-selected="false" aria-controls="coding">Coding Stats</button>
-       <button class="nav-link" data-tab="resume" role="tab" aria-selected="false" aria-controls="resume">Resume</button>
-     </nav>
+      <nav class="nav" role="tablist" aria-label="Portfolio sections">
+        <a href="#about" class="nav-link active" data-tab="about" role="tab" aria-selected="true" aria-controls="about">👤 About</a>
+        <a href="#experience" class="nav-link" data-tab="experience" role="tab" aria-selected="false" aria-controls="experience">💼 Experience</a>
+        <a href="#education" class="nav-link" data-tab="education" role="tab" aria-selected="false" aria-controls="education">🎓 Education</a>
+        <a href="#projects" class="nav-link" data-tab="projects" role="tab" aria-selected="false" aria-controls="projects">🚀 Projects</a>
+        <a href="#coding" class="nav-link" data-tab="coding" role="tab" aria-selected="false" aria-controls="coding">💻 Coding Stats</a>
+        <a href="#resume" class="nav-link" data-tab="resume" role="tab" aria-selected="false" aria-controls="resume">📄 Resume</a>
+      </nav>
 
       <div class="toggles">
         <a class="social linkedin" href="https://www.linkedin.com/in/akshata-madavi/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
@@ -79,31 +79,7 @@
        </div>
      </section>
 
-     <!-- Projects -->
-     <section id="projects" class="tab" role="tabpanel" aria-labelledby="projects-tab">
-      <h2>Projects</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Philosophy‑based Recommender (LLMs + RAG)</h3>
-          <p>Personalized mental‑wellness recommendations using LLMs and RAG over curated philosophical texts.
-             Focus on prompt design, retrieval quality, and safety.</p>
-          <div class="meta"><span>LLMs</span><span>RAG</span><span>Python</span></div>
-          <a class="btn" href="#" aria-disabled="true">Repo coming soon</a>
-        </article>
-        <article class="card">
-          <h3>NYC Taxi Fare Prediction (30M rows)</h3>
-          <p>Distributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.</p>
-          <div class="meta"><span>PySpark</span><span>MLflow</span><span>GCP</span></div>
-          <a class="btn" href="#" aria-disabled="true">Demo link (placeholder)</a>
-        </article>
-        <article class="card">
-          <h3>GCP Data Pipelines @ Scale</h3>
-          <p>Event‑driven pipelines to migrate on‑prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.</p>
-          <div class="meta"><span>Dataflow</span><span>BigQuery</span><span>Workflows</span></div>
-          <a class="btn" href="#" aria-disabled="true">Case study (placeholder)</a>
-        </article>
-      </div>
-    </section>
+
 
      <!-- Experience -->
      <section id="experience" class="tab" role="tabpanel" aria-labelledby="experience-tab">
@@ -156,18 +132,41 @@
              <p>Courses: Programming, Databases, Algorithms, Software Design</p>
            </div>
          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="tab" role="tabpanel" aria-labelledby="projects-tab">
+       <h2>Projects</h2>
+       <div class="cards">
+         <article class="card">
+           <h3>Philosophy‑based Recommender (LLMs + RAG)</h3>
+           <p>Personalized mental‑wellness recommendations using LLMs and RAG over curated philosophical texts.
+              Focus on prompt design, retrieval quality, and safety.</p>
+           <div class="meta"><span>LLMs</span><span>RAG</span><span>Python</span></div>
+         </article>
+         <article class="card">
+           <h3>NYC Taxi Fare Prediction (30M rows)</h3>
+           <p>Distributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.</p>
+           <div class="meta"><span>PySpark</span><span>MLflow</span><span>GCP</span></div>
+         </article>
+         <article class="card">
+           <h3>GCP Data Pipelines @ Scale</h3>
+           <p>Event‑driven pipelines to migrate on‑prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.</p>
+           <div class="meta"><span>Dataflow</span><span>BigQuery</span><span>Workflows</span></div>
+         </article>
        </div>
      </section>
 
-     <!-- Coding Stats -->
+      <!-- Coding Stats -->
      <section id="coding" class="tab" role="tabpanel" aria-labelledby="coding-tab">
        <h2>Coding Stats</h2>
         <div class="coding-grid">
           <div class="coding-platform">
-            <div class="platform-header">
-              <img src="https://www.hackerrank.com/wp-content/uploads/2018/08/hackerrank_logo.png" alt="HackerRank" class="platform-logo" />
-              <h3>HackerRank</h3>
-            </div>
+             <div class="platform-header">
+               <img src="https://cdn.worldvectorlogo.com/logos/hackerrank.svg" alt="HackerRank" class="platform-logo" />
+               <h3>HackerRank</h3>
+             </div>
             <h4>Badges</h4>
             <div class="stats-container">
               <div class="stat-item">
@@ -213,10 +212,10 @@
             <a class="btn" href="https://www.hackerrank.com/profile/akshatamadavi" target="_blank" rel="noopener">View Profile</a>
           </div>
           <div class="coding-platform">
-            <div class="platform-header">
-              <img src="https://assets.leetcode.com/static_assets/public/webpack_bundles/images/logo-dark.e99485d9b.svg" alt="LeetCode" class="platform-logo" />
-              <h3>LeetCode</h3>
-            </div>
+             <div class="platform-header">
+               <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode" class="platform-logo" />
+               <h3>LeetCode</h3>
+             </div>
             <h4>Problem Solving Stats</h4>
             <div id="leetcode-stats" class="stats-container">
               <div class="stat-item">
@@ -244,13 +243,13 @@
      <!-- Resume -->
      <section id="resume" class="tab" role="tabpanel" aria-labelledby="resume-tab">
        <h2>Resume</h2>
-       <div class="resume-actions">
-         <a class="btn" href="assets/Resume_Akshata_Data_Engineer.pdf" download>Download PDF</a>
-         <span class="muted">Replace this file in <code>/assets/</code> to update.</span>
-       </div>
-       <div class="pdf-embed">
-         <embed src="assets/Resume_Akshata_Data_Engineer.pdf" type="application/pdf" />
-       </div>
+        <div class="resume-actions">
+          <a class="btn" href="assets/resume.pdf" download>Download PDF</a>
+          <span class="muted">Replace this file in <code>/assets/</code> to update.</span>
+        </div>
+        <div class="pdf-embed">
+          <embed src="assets/resume.pdf" type="application/pdf" />
+        </div>
      </section>
   </main>
 
