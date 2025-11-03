@@ -211,7 +211,31 @@ main {
   padding: 0 2rem;
 }
 #resume .pdf-embed {
-  margin: 0 -1rem;
+  margin: 0;
+}
+#resume .pdf-embed embed {
+  height: 100vh;
+}
+.resume-page header,
+.resume-page footer {
+  display: none;
+}
+.resume-page main {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+.resume-page .pdf-embed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}
+.resume-page .pdf-embed embed {
+  width: 100vw;
+  height: 100vh;
 }
 
 /* Brand section (photo + name) */
