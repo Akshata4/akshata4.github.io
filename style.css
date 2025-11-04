@@ -11,13 +11,16 @@ body.dark {
   --text: #eee;
   --accent: #34495e;
   --accent2: #7f8c8d;
+  background-image: none;
 }
 /* Fix for pastel background */
 html {
   scroll-behavior: smooth;
 }
 body {
-  background: var(--bg);
+  background: var(--bg) url('https://media.istockphoto.com/id/2063511115/photo/marble-abstract-christmas-white-gray-grunge-texture-wave-pattern-snow-ice-floe-hill-silver.jpg?b=1&s=612x612&w=0&k=20&c=udaRkbg4toBintzvnPG1V--tA2dcZynWerUmEDEexkY=') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
   color: var(--text);
   font-family: 'Inter', sans-serif;
   margin: 0;
