@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+
+// Pastel purple theme (dark)
+// Base document colors
+$body-bg: #1B1330;         // deep plum background
+$body-color: #F2EEFF;      // soft off-white text
+$link-color: #CDB4FF;      // light pastel purple links
+
+$light: #BDA5FF;           // pale purple for accents
+
+// Navigation element colors
+$footer-bg: #160D28;       // very dark plum
+$navbar-bg: #3b0f5e;       // deep muted purple
+$sidebar-bg: #1E0F29;
+
+// Code blocks
+$code-block-bg-alpha: -.8; // keep stronger contrast for code blocks on dark theme
+
+// Bootstrap popovers
+$popover-bg: #2A1A3B;
+
+// Bootstrap inputs
+$input-bg: #2A1A3B;

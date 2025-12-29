@@ -1,7 +1,76 @@
 ---
-title: "Portfolio"
+title: "Akshata Madavi"
+description: "Building Scalable Data Solutions | Data Engineer | Graduate Student at SJSU"
+about:
+    template: solana
+    links:
+        - icon: linkedin
+          text: LinkedIn
+          url: https://www.linkedin.com/in/akshata-madavi/
+        - icon: github
+          text: Github
+          url: https://github.com/akshata4
+        - text: "{{< fa envelope >}} Email"
+          url: mailto:akshatamadavi@gmail.com
+    image: assets/akshata.jpeg
+    
+comments: false
 ---
 
-This is a Quarto website.
+Currently pursuing MS in Software Engineering with Data Science focus. Previously worked as Senior Data Engineer at LTIMindtree, building scalable pipelines and optimizing analytics. Passionate about leveraging AI/ML for impactful data solutions.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+# Experience
+
+---
+
+### Senior Data Engineer @ LTIMindtree
+
+#### May 2023 – Mar 2025 | Pune, India
+
+Migrated on-prem DBs to BigQuery for near real-time analytics (~10M records). Built event-driven pipelines processing 30GB inconsistent Excel data in <10 minutes with parallelism. Managed production orchestration with Google Workflows.
+
+### Data Engineer @ AI Adventures
+
+#### Aug 2021 – Apr 2023 | Pune, India
+
+Migrated Moodle to MySQL; enabled BI views driving +20% revenue. Improved insights on sales, retention, and curriculum performance through data engineering solutions.
+
+### Data Engineer @ STL
+
+#### Jun 2018 – May 2021 | Pune, India
+
+Developed near real-time pipelines from Oracle/SAP/Salesforce to BigQuery (~1TB processed). Built Tableau reports for scrap detection and DOE analysis to support manufacturing operations.
+
+# Education
+
+---
+
+### San Jose State University (SJSU)
+
+#### MS, Software Engineering (Data Science) | Aug 2025 – Present
+
+Courses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms
+
+
+### College of Engineering Pune (COEP)
+
+#### BS, Computer Engineering | Aug 2014 – May 2018
+
+Courses: Programming, Databases, Algorithms, Software Design
+
+
+# Projects
+
+---
+
+### Philosophy‑based Recommender (LLMs + RAG)
+
+Personalized mental‑wellness recommendations using LLMs and RAG over curated philosophical texts. Focus on prompt design, retrieval quality, and safety.
+
+### NYC Taxi Fare Prediction (30M rows)
+
+Distributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.
+
+### GCP Data Pipelines @ Scale
+
+Event‑driven pipelines to migrate on‑prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.

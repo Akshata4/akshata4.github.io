@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+
+// Pastel purple theme (light)
+// Base document colors
+$body-bg: #F6F3FF;          // very light lavender
+$body-color: #2B2430;      // dark plum for text
+$link-color: #8A63FF;      // pastel violet accent
+
+$light: #7D67A6;           // muted purple
+
+// Navigation element colors
+$footer-bg: #ECE5FF;       // soft lavender
+$navbar-bg: #E9E0FF;       // slightly darker soft lavender
+$sidebar-bg: #EDE6FF;
+
+// Code blocks
+$code-block-bg-alpha: .02; // subtle contrast for code blocks on light background
+
+// Bootstrap popovers
+$popover-bg: #F1EBFF;
+
+// Bootstrap inputs
+$input-bg: #F6F1FF;
