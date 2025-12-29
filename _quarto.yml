@@ -1,0 +1,75 @@
+project:
+  type: website
+
+website:
+  title: "Akshata Madavi"
+  navbar:
+    right: 
+      - text: Resume
+        href: assets/resume.pdf
+      - icon: github
+        href: https://github.com/akshatamadavi
+        aria-label: GitHub
+      - icon: linkedin
+        href: https://www.linkedin.com/in/akshatamadavi/
+        aria-label: LinkedIn
+  page-footer:
+    border: true
+    left: |
+      Made with <i class="fa-solid fa-heart" style="color:red;"></i> using [Quarto](https://quarto.org)
+    right: |
+      &copy; []{#current-year} Akshata Madavi 
+
+format:
+  html: 
+    grid:
+      body-width: 1000px
+    theme:
+      light: [cosmo, style/light.scss]
+      dark: [cosmo, style/dark.scss]
+    lang: en-GB
+    date-format: 'dddd[, the] Do [of] MMMM, YYYY'
+    highlight-style: github
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    anchor-sections: true
+    email-obfuscation: javascript
+    link-external-newwindow: true
+    fig-align: center
+    code-tools:
+      source: false
+      toggle: false
+      caption: none
+    include-after-body:
+      - text: |
+          <script type="text/javascript">
+            const dateElements = document.querySelectorAll("p.date, p.date-modified, div.listing-date, div.listing-file-modified");
+            dateElements.forEach((el) => {
+              el.innerHTML = el.innerHTML.replace(
+                /(\d+)(st|nd|rd|th)/g,
+                "$1<sup style='font-size:0.5em;font-style:italic;'>$2</sup>"
+              );
+            });
+          </script>
+      - text: |
+          <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+              const currentYear = new Date().getFullYear();
+              document.getElementById('current-year').textContent = currentYear;
+            });
+          </script>
+      - text: |
+          <script>
+            document.querySelectorAll('header#title-block-header div, header#title-block-header p').forEach(function(el) {
+              if (!el.textContent.trim()) {
+                el.style.display = 'none';
+                el.textContent = "";
+              }
+            });
+          </script>
+
+lightbox: auto
+
+
+
