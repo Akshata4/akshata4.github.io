@@ -17,9 +17,9 @@ website:
   page-footer:
     border: true
     left: |
-      Made with <i class="fa-solid fa-heart" style="color:red;"></i> using [Quarto](https://quarto.org)
+      <b>Made with <i class="fa-solid fa-heart" style="color:red;"></i> using [Quarto](https://quarto.org)</b>
     right: |
-      &copy; []{#current-year} Akshata Madavi 
+      <b>&copy; []{#current-year} Akshata Madavi</b>
 
 format:
   html:
