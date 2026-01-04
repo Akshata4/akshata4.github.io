@@ -10,36 +10,74 @@ about:
         - icon: github
           text: Github
           url: https://github.com/akshata4
-        - text: "{{< fa envelope >}} Email"
+        - icon: envelope
+          text: Email
           url: mailto:akshatamadavi@gmail.com
-    image: assets/akshata.jpeg
-    
 comments: false
 ---
 
 Currently pursuing MS in Software Engineering with Data Science focus. Previously worked as Senior Data Engineer at LTIMindtree, building scalable pipelines and optimizing analytics. Passionate about leveraging AI/ML for impactful data solutions.
 
+![](assets/akshata.jpeg){width=150px style="border-radius: 50%; margin-bottom: 20px;"} 
+
 # Experience
 
 ---
 
-### Senior Data Engineer @ LTIMindtree
+<div class="card mb-4 h-100 shadow-sm">
 
-#### May 2023 – Mar 2025 | Pune, India
+<div class="card-body">
+<h5 class="card-title">Senior Data Engineer</h5>
+<div class="d-flex justify-content-between align-items-center mb-2">
+  <h6 class="card-subtitle mb-0 text-muted">LTIMindtree - Pune, India</h6>
+  <small class="text-muted">May 2023 – Mar 2025</small>
+</div>
 
-Migrated on-prem DBs to BigQuery for near real-time analytics (~10M records). Built event-driven pipelines processing 30GB inconsistent Excel data in <10 minutes with parallelism. Managed production orchestration with Google Workflows.
+- Developed and optimized near real-time data pipelines to seamlessly migrate on-premises traditional databases to a
+centralized BigQuery platform, facilitating efficient analytical workloads and insights. Processed approximately 10 million records.
+- Designed and implemented an event-driven pipeline to process and load complex, inconsistent data from multiple
+Excel sheets into GCP, reducing processing time from a week to under 10 minutes with parallel processing of
+30 GB.
+- Established orchestration using Google Workflow to ensure smooth execution and management of data pipelines.
 
-### Data Engineer @ AI Adventures
+</div>
 
-#### Aug 2021 – Apr 2023 | Pune, India
+</div>
 
-Migrated Moodle to MySQL; enabled BI views driving +20% revenue. Improved insights on sales, retention, and curriculum performance through data engineering solutions.
+<div class="card mb-4 h-100 shadow-sm">
 
-### Data Engineer @ STL
+<div class="card-body">
+<h5 class="card-title">Data Engineer</h5>
+<div class="d-flex justify-content-between align-items-center mb-2">
+  <h6 class="card-subtitle mb-0 text-muted">AI Adventures - Pune, India</h6>
+  <small class="text-muted">Aug 2021 – Apr 2023</small>
+</div>
 
-#### Jun 2018 – May 2021 | Pune, India
+- Led migration of course data from Moodle to MySQL, enabling business intelligence views that drove a 20% increase
+in revenue.
+- Expanded insights into sales, student retention, and curriculum performance, improving data-informed decisions
+across the organization.
 
-Developed near real-time pipelines from Oracle/SAP/Salesforce to BigQuery (~1TB processed). Built Tableau reports for scrap detection and DOE analysis to support manufacturing operations.
+</div>
+
+</div>
+
+<div class="card mb-4 h-100 shadow-sm">
+
+<div class="card-body">
+<h5 class="card-title">Data Engineer</h5>
+<div class="d-flex justify-content-between align-items-center mb-2">
+  <h6 class="card-subtitle mb-0 text-muted">STL - Pune, India</h6>
+  <small class="text-muted">Jun 2018 – May 2021</small>
+</div>
+
+- Built near real-time data pipelines to migrate on-prem databases (Oracle, SAP and Salesforce) to BigQuery, enabling efficient analytics and processing approximately 1 TB of data.
+- Provided Tableau reports and data-driven insights to support business functions, including scrap detection and DOE analysis, driving process improvements and informed decision making.
+- Collaborated with cross-functional teams to ensure effective data usage, driving successful operational outcomes, and achieve business objectives.
+</div>
+
+</div>
+
 
 # Education
 

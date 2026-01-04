@@ -21,3 +21,16 @@ $popover-bg: #2A1A3B;
 
 // Bootstrap inputs
 $input-bg: #2A1A3B;
+
+// Cards
+.card {
+  border-radius: .75rem;
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(189,165,255,0.04); }
+.card .card-body {
+  background-color: rgba(255,255,255,0.02);
+  padding: 1.5rem;
+}
+.card-title { font-weight: 600; }
