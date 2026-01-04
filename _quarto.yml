@@ -3,10 +3,10 @@ project:
   output-dir: docs
 
 website:
-  title: "Akshata Madavi"
+  title: <b>Akshata Madavi</b>
   navbar:
     right: 
-      - text: Resume
+      - text: <b>Resume</b>
         href: assets/resume.pdf
       - icon: github
         href: https://github.com/akshatamadavi
@@ -22,7 +22,10 @@ website:
       &copy; []{#current-year} Akshata Madavi 
 
 format:
-  html: 
+  html:
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     grid:
       body-width: 1000px
     theme:

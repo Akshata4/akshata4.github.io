@@ -1,24 +1,17 @@
 ---
 title: "Akshata Madavi"
-description: "Building Scalable Data Solutions | Data Engineer | Graduate Student at SJSU"
+description: <br><b>Building Scalable Data Solutions | Data Engineer | Graduate Student at SJSU</b> <br><br>Currently pursuing MS in Software Engineering with Data Science focus. Previously worked as Senior Data Engineer at LTIMindtree, building scalable pipelines and optimizing analytics. Passionate about leveraging AI/ML for impactful data solutions.
 about:
-    template: solana
-    links:
-        - icon: linkedin
-          text: LinkedIn
-          url: https://www.linkedin.com/in/akshata-madavi/
-        - icon: github
-          text: Github
-          url: https://github.com/akshata4
-        - icon: envelope
-          text: Email
-          url: mailto:akshatamadavi@gmail.com
+    template: jolla
+image: assets/akshata.jpeg
 comments: false
 ---
 
-Currently pursuing MS in Software Engineering with Data Science focus. Previously worked as Senior Data Engineer at LTIMindtree, building scalable pipelines and optimizing analytics. Passionate about leveraging AI/ML for impactful data solutions.
-
-![](assets/akshata.jpeg){width=150px style="border-radius: 50%; margin-bottom: 20px;"} 
+<div class="social-buttons text-center mb-4">
+  <a class="btn btn-outline-secondary social-btn mx-2" href="https://www.linkedin.com/in/akshata-madavi/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+  <a class="btn btn-outline-secondary social-btn mx-2" href="https://github.com/akshata4" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Github</a>
+  <a class="btn btn-outline-secondary social-btn mx-2" href="mailto:akshatamadavi@gmail.com"><i class="fa-regular fa-envelope"></i> Email</a>
+</div>
 
 # Experience
 
@@ -29,8 +22,8 @@ Currently pursuing MS in Software Engineering with Data Science focus. Previousl
 <div class="card-body">
 <h5 class="card-title">Senior Data Engineer</h5>
 <div class="d-flex justify-content-between align-items-center mb-2">
-  <h6 class="card-subtitle mb-0 text-muted">LTIMindtree - Pune, India</h6>
-  <small class="text-muted">May 2023 – Mar 2025</small>
+  <h6 class="card-subtitle mb-0">LTIMindtree - Pune, India</h6>
+  <small>May 2023 – Mar 2025</small>
 </div>
 
 - Developed and optimized near real-time data pipelines to seamlessly migrate on-premises traditional databases to a
@@ -49,8 +42,8 @@ Excel sheets into GCP, reducing processing time from a week to under 10 minutes 
 <div class="card-body">
 <h5 class="card-title">Data Engineer</h5>
 <div class="d-flex justify-content-between align-items-center mb-2">
-  <h6 class="card-subtitle mb-0 text-muted">AI Adventures - Pune, India</h6>
-  <small class="text-muted">Aug 2021 – Apr 2023</small>
+  <h6 class="card-subtitle mb-0">AI Adventures - Pune, India</h6>
+  <small>Aug 2021 – Apr 2023</small>
 </div>
 
 - Led migration of course data from Moodle to MySQL, enabling business intelligence views that drove a 20% increase
@@ -67,8 +60,8 @@ across the organization.
 <div class="card-body">
 <h5 class="card-title">Data Engineer</h5>
 <div class="d-flex justify-content-between align-items-center mb-2">
-  <h6 class="card-subtitle mb-0 text-muted">STL - Pune, India</h6>
-  <small class="text-muted">Jun 2018 – May 2021</small>
+  <h6 class="card-subtitle mb-0">STL - Pune, India</h6>
+  <small>Jun 2018 – May 2021</small>
 </div>
 
 - Built near real-time data pipelines to migrate on-prem databases (Oracle, SAP and Salesforce) to BigQuery, enabling efficient analytics and processing approximately 1 TB of data.
@@ -83,32 +76,54 @@ across the organization.
 
 ---
 
-### San Jose State University (SJSU)
+<div class="card mb-4 h-100 shadow-sm">
 
-#### MS, Software Engineering (Data Science) | Aug 2025 – Present
+<div class="card-body">
+<h5 class="card-title">San Jose State University (SJSU)</h5>
+<div class="d-flex justify-content-between align-items-center mb-2">
+  <h6 class="card-subtitle mb-0">MS, Software Engineering (Data Science)</h6>
+  <small>Aug 2025 – Present</small>
+</div>
+<p>Courses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms</p>
+</div>
 
-Courses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms
+</div>
 
+<div class="card mb-4 h-100 shadow-sm">
 
-### College of Engineering Pune (COEP)
+<div class="card-body">
+<h5 class="card-title">College of Engineering Pune (COEP)</h5>
+<div class="d-flex justify-content-between align-items-center mb-2">
+  <h6 class="card-subtitle mb-0">BS, Computer Engineering</h6>
+  <small>Aug 2014 – May 2018</small>
+</div>
+<p>Courses: Programming, Databases, Algorithms, Software Design</p>
+</div>
 
-#### BS, Computer Engineering | Aug 2014 – May 2018
-
-Courses: Programming, Databases, Algorithms, Software Design
+</div>
 
 
 # Projects
 
 ---
 
-### Philosophy‑based Recommender (LLMs + RAG)
+<div class="card mb-4 h-100 shadow-sm">
+<div class="card-body">
+<h5 class="card-title">Philosophy‑based Recommender (LLMs + RAG)</h5>
+<p>Personalized mental‑wellness recommendations using LLMs and RAG over curated philosophical texts. Focus on prompt design, retrieval quality, and safety.</p>
+</div>
+</div>
 
-Personalized mental‑wellness recommendations using LLMs and RAG over curated philosophical texts. Focus on prompt design, retrieval quality, and safety.
+<div class="card mb-4 h-100 shadow-sm">
+<div class="card-body">
+<h5 class="card-title">NYC Taxi Fare Prediction (30M rows)</h5>
+<p>Distributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.</p>
+</div>
+</div>
 
-### NYC Taxi Fare Prediction (30M rows)
-
-Distributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.
-
-### GCP Data Pipelines @ Scale
-
-Event‑driven pipelines to migrate on‑prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.
+<div class="card mb-4 h-100 shadow-sm">
+<div class="card-body">
+<h5 class="card-title">GCP Data Pipelines @ Scale</h5>
+<p>Event‑driven pipelines to migrate on‑prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.</p>
+</div>
+</div>

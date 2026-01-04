@@ -26,10 +26,34 @@ $input-bg: #F6F1FF;
 .card {
   border-radius: .75rem;
   transition: transform .12s ease, box-shadow .12s ease;
+  overflow: hidden; /* ensure inner content doesn't overflow rounded edges */
+  position: relative;
 }
 .card:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(138,99,255,0.08); }
 .card .card-body {
-  background-color: rgba(255,255,255,0.9);
+  background-color: $navbar-bg;
   padding: 1.5rem;
+  text-align: left;
 }
 .card-title { font-weight: 600; }
+
+/* Site description (center intro) */
+.description {
+  text-align: center;
+  max-width: 900px;
+  margin: 0.35rem auto 0.0rem auto; /* reduced bottom margin */
+  font-size: 1.05rem;
+}
+
+/* Social buttons */
+.social-buttons { text-align:center; margin: 0.0rem 0 2rem 0; }
+.social-btn {
+  border-radius: .5rem;
+  padding: .48rem 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: 1rem;
+  border-width: 1.2px;
+}
+.social-btn i { margin-right: .35rem; font-size: 1.05rem; }
