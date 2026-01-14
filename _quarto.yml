@@ -3,9 +3,23 @@ project:
   output-dir: docs
 
 website:
-  title: <b>Akshata Madavi</b>
+  title: ""
   navbar:
-    right: 
+    left:
+      - icon: list
+        aria-label: Sections
+        menu:
+          - text: "Experience"
+            href: index.qmd#experience
+          - text: "Education"
+            href: index.qmd#education
+          - text: "Projects"
+            href: index.qmd#projects
+          - text: "Blogs"
+            href: index.qmd#blogs
+      - text: "<b>Akshata Madavi</b>"
+        href: index.qmd
+    right:
       - text: <b>Resume</b>
         href: assets/resume.pdf
       - icon: github

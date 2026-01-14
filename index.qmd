@@ -1,6 +1,6 @@
 ---
 title: "Akshata Madavi"
-description: <br><b>Building Scalable Data Solutions | Data Engineer | Graduate Student at SJSU</b> <br><br>Currently pursuing MS in Software Engineering with Data Science focus. Previously worked as Senior Data Engineer at LTIMindtree, building scalable pipelines and optimizing analytics. Passionate about leveraging AI/ML for impactful data solutions.
+description: <br><b>From Pipelines to Predictions | Data Engineer Turning AI/ML Builder | SJSU Grad Student</b> <br><br>6+ years engineering data at scale, now channeling that into AI/ML. Building LLM-powered apps, experimenting with RAG, and bridging the gap between raw data and intelligent systems.
 about:
     template: jolla
 image: assets/akshata.jpeg
@@ -20,10 +20,10 @@ comments: false
 ::: {.card .mb-4 .shadow-sm}
 ::: {.card-body}
 ::: {.grid}
-::: {.g-col-2}
+::: {.g-col-1}
 ![](assets/ltim-logo.jpeg){.company-logo}
 :::
-::: {.g-col-10}
+::: {.g-col-11}
 ##### Senior Data Engineer {.card-title}
 
 ::: {.d-flex .justify-content-between .align-items-center .mb-2}
@@ -46,10 +46,10 @@ comments: false
 ::: {.card .mb-4 .shadow-sm}
 ::: {.card-body}
 ::: {.grid}
-::: {.g-col-2}
+::: {.g-col-1}
 ![](assets/aiadv-logo.jpeg){.company-logo}
 :::
-::: {.g-col-10}
+::: {.g-col-11}
 ##### Data Engineer {.card-title}
 
 ::: {.d-flex .justify-content-between .align-items-center .mb-2}
@@ -71,10 +71,10 @@ comments: false
 ::: {.card .mb-4 .shadow-sm}
 ::: {.card-body}
 ::: {.grid}
-::: {.g-col-2}
+::: {.g-col-1}
 ![](assets/stl-logo.png){.company-logo}
 :::
-::: {.g-col-10}
+::: {.g-col-11}
 ##### Data Engineer {.card-title}
 
 ::: {.d-flex .justify-content-between .align-items-center .mb-2}
@@ -131,6 +131,36 @@ Courses: Programming, Databases, Algorithms, Software Design
 ---
 
 ::: {.grid}
+<div class="g-col-12 g-col-md-4">
+<div class="card h-100 shadow-sm">
+<img src="assets/vital-watch.png" class="project-thumbnail">
+<div class="card-body">
+<h5 class="card-title"><a href="https://github.com/Akshata4/vital-watch" target="_blank">Vital Watch</a></h5>
+<p>Real-time health monitoring system that tracks vital signs and provides early warning alerts for critical health conditions.</p>
+</div>
+</div>
+</div>
+
+<div class="g-col-12 g-col-md-4">
+<div class="card h-100 shadow-sm">
+<img src="assets/ai-governance.png" class="project-thumbnail">
+<div class="card-body">
+<h5 class="card-title"><a href="https://github.com/Akshata4/ai_governance" target="_blank">AI Governance</a></h5>
+<p>Chrome extension + local Ollama backend to detect and redact sensitive data in LLM prompts before submission.</p>
+</div>
+</div>
+</div>
+
+<div class="g-col-12 g-col-md-4">
+<div class="card h-100 shadow-sm">
+<img src="assets/smart-study.png" class="project-thumbnail">
+<div class="card-body">
+<h5 class="card-title"><a href="https://github.com/Akshata4/smart-study-companion" target="_blank">Smart Study Companion</a></h5>
+<p>AI-powered learning assistant that adapts to each student's pace, tone, and skill level with interactive conversations.</p>
+</div>
+</div>
+</div>
+
 ::: {.g-col-12 .g-col-md-4}
 ::: {.card .h-100 .shadow-sm}
 ::: {.card-body}
@@ -157,6 +187,47 @@ Distributed PySpark ML pipeline, engineered geospatial/time features, trained GB
 ##### GCP Data Pipelines @ Scale {.card-title}
 
 Event-driven pipelines to migrate on-prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.
+:::
+:::
+:::
+:::
+
+
+# Blogs
+
+---
+
+::: {.grid}
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100 .shadow-sm}
+::: {.card-body}
+::: {.grid}
+::: {.g-col-3}
+![](assets/dl-table-problem.webp){.blog-thumbnail}
+:::
+::: {.g-col-9}
+##### [Deep Learning's Blind Spot: The Table Problem](https://medium.com/@akshatamadavi/deep-learnings-blind-spot-the-table-problem-a91150a38369){target="_blank"} {.card-title}
+
+Exploring why deep learning models struggle with tabular data and when traditional ML methods still outperform neural networks.
+:::
+:::
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100 .shadow-sm}
+::: {.card-body}
+::: {.grid}
+::: {.g-col-3}
+![](assets/lung-cancer.webp){.blog-thumbnail}
+:::
+::: {.g-col-9}
+##### [Catching Risk Early: A Recall-First Lung Cancer Classifier](https://medium.com/@akshatamadavi/catching-risk-early-a-recall-first-lung-cancer-classifier-in-8-steps-crisp-dm-scikit-learn-d39973b5c69d){target="_blank"} {.card-title}
+
+Building a lung cancer classifier using CRISP-DM methodology and Scikit-learn, prioritizing recall to minimize missed diagnoses.
+:::
+:::
 :::
 :::
 :::
