@@ -101,6 +101,11 @@ comments: false
 
 ::: {.card .mb-4 .shadow-sm}
 ::: {.card-body}
+::: {.grid}
+::: {.g-col-1}
+![](assets/sjsu-logo.png){.company-logo}
+:::
+::: {.g-col-11}
 ##### San Jose State University (SJSU) {.card-title}
 
 ::: {.d-flex .justify-content-between .align-items-center .mb-2}
@@ -111,9 +116,16 @@ comments: false
 Courses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms
 :::
 :::
+:::
+:::
 
 ::: {.card .mb-4 .shadow-sm}
 ::: {.card-body}
+::: {.grid}
+::: {.g-col-1}
+![](assets/coep-logo.png){.company-logo}
+:::
+::: {.g-col-11}
 ##### College of Engineering Pune (COEP) {.card-title}
 
 ::: {.d-flex .justify-content-between .align-items-center .mb-2}
@@ -122,6 +134,8 @@ Courses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software P
 :::
 
 Courses: Programming, Databases, Algorithms, Software Design
+:::
+:::
 :::
 :::
 
