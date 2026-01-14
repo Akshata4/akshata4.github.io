@@ -89,7 +89,7 @@ $input-bg: #2A1A3B;
 
 /* Grid layout adjustments */
 .grid {
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 /* Card subtitle styling */
@@ -102,4 +102,20 @@ $input-bg: #2A1A3B;
 .text-muted {
   font-size: 0.9rem;
   color: rgba(242, 238, 255, 0.7) !important;
+}
+
+/* Blog thumbnails */
+.blog-thumbnail {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+/* Project thumbnails */
+.project-thumbnail {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 0.75rem 0.75rem 0 0;
 }
