@@ -66,3 +66,40 @@ $input-bg: #2A1A3B;
   border: 1px solid $light;
 }
 .social-btn i { color: $light !important; margin-right: .35rem; font-size: 1.05rem; }
+
+/* Company logos in experience cards */
+.company-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Callout styling for achievements */
+.callout-tip {
+  background-color: rgba(189, 165, 255, 0.1);
+  border-left-color: $link-color;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+.callout-tip.callout-style-minimal {
+  border-left-width: 3px;
+}
+
+/* Grid layout adjustments */
+.grid {
+  gap: 1rem;
+}
+
+/* Card subtitle styling */
+.card-subtitle {
+  color: $light;
+  font-weight: 500;
+}
+
+/* Text muted override for dates */
+.text-muted {
+  font-size: 0.9rem;
+  color: rgba(242, 238, 255, 0.7) !important;
+}

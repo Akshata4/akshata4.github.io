@@ -57,3 +57,39 @@ $input-bg: #F6F1FF;
   border-width: 1.2px;
 }
 .social-btn i { margin-right: .35rem; font-size: 1.05rem; }
+
+/* Company logos in experience cards */
+.company-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Callout styling for achievements */
+.callout-tip {
+  background-color: rgba(138, 99, 255, 0.08);
+  border-left-color: $link-color;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+.callout-tip.callout-style-minimal {
+  border-left-width: 3px;
+}
+
+/* Grid layout adjustments */
+.grid {
+  gap: 1rem;
+}
+
+/* Card subtitle styling */
+.card-subtitle {
+  color: $light;
+  font-weight: 500;
+}
+
+/* Text muted override for dates */
+.text-muted {
+  font-size: 0.9rem;
+}

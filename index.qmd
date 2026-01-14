@@ -17,113 +17,147 @@ comments: false
 
 ---
 
-<div class="card mb-4 h-100 shadow-sm">
+::: {.card .mb-4 .shadow-sm}
+::: {.card-body}
+::: {.grid}
+::: {.g-col-2}
+![](assets/ltim-logo.jpeg){.company-logo}
+:::
+::: {.g-col-10}
+##### Senior Data Engineer {.card-title}
 
-<div class="card-body">
-<h5 class="card-title">Senior Data Engineer</h5>
-<div class="d-flex justify-content-between align-items-center mb-2">
-  <h6 class="card-subtitle mb-0">LTIMindtree - Pune, India</h6>
-  <small>May 2023 – Mar 2025</small>
-</div>
+::: {.d-flex .justify-content-between .align-items-center .mb-2}
+###### LTIMindtree - Pune, India {.card-subtitle .mb-0}
+[May 2023 – Mar 2025]{.text-muted}
+:::
 
-- Developed and optimized near real-time data pipelines to seamlessly migrate on-premises traditional databases to a
-centralized BigQuery platform, facilitating efficient analytical workloads and insights. Processed approximately 10 million records.
-- Designed and implemented an event-driven pipeline to process and load complex, inconsistent data from multiple
-Excel sheets into GCP, reducing processing time from a week to under 10 minutes with parallel processing of
-30 GB.
+- Developed and optimized near real-time data pipelines to seamlessly migrate on-premises traditional databases to a centralized BigQuery platform, facilitating efficient analytical workloads and insights. Processed approximately 10 million records.
+- Designed and implemented an event-driven pipeline to process and load complex, inconsistent data from multiple Excel sheets into GCP, reducing processing time from a week to under 10 minutes with parallel processing of 30 GB.
 - Established orchestration using Google Workflow to ensure smooth execution and management of data pipelines.
 
-</div>
+::: {.callout-tip appearance="minimal" icon=false}
+**Key Achievement:** Reduced processing time from 1 week to under 10 minutes
+:::
+:::
+:::
+:::
+:::
 
-</div>
+::: {.card .mb-4 .shadow-sm}
+::: {.card-body}
+::: {.grid}
+::: {.g-col-2}
+![](assets/aiadv-logo.jpeg){.company-logo}
+:::
+::: {.g-col-10}
+##### Data Engineer {.card-title}
 
-<div class="card mb-4 h-100 shadow-sm">
+::: {.d-flex .justify-content-between .align-items-center .mb-2}
+###### AI Adventures - Pune, India {.card-subtitle .mb-0}
+[Aug 2021 – Apr 2023]{.text-muted}
+:::
 
-<div class="card-body">
-<h5 class="card-title">Data Engineer</h5>
-<div class="d-flex justify-content-between align-items-center mb-2">
-  <h6 class="card-subtitle mb-0">AI Adventures - Pune, India</h6>
-  <small>Aug 2021 – Apr 2023</small>
-</div>
+- Led migration of course data from Moodle to MySQL, enabling business intelligence views that drove a 20% increase in revenue.
+- Expanded insights into sales, student retention, and curriculum performance, improving data-informed decisions across the organization.
 
-- Led migration of course data from Moodle to MySQL, enabling business intelligence views that drove a 20% increase
-in revenue.
-- Expanded insights into sales, student retention, and curriculum performance, improving data-informed decisions
-across the organization.
+::: {.callout-tip appearance="minimal" icon=false}
+**Key Achievement:** Drove 20% increase in revenue through BI views
+:::
+:::
+:::
+:::
+:::
 
-</div>
+::: {.card .mb-4 .shadow-sm}
+::: {.card-body}
+::: {.grid}
+::: {.g-col-2}
+![](assets/stl-logo.png){.company-logo}
+:::
+::: {.g-col-10}
+##### Data Engineer {.card-title}
 
-</div>
-
-<div class="card mb-4 h-100 shadow-sm">
-
-<div class="card-body">
-<h5 class="card-title">Data Engineer</h5>
-<div class="d-flex justify-content-between align-items-center mb-2">
-  <h6 class="card-subtitle mb-0">STL - Pune, India</h6>
-  <small>Jun 2018 – May 2021</small>
-</div>
+::: {.d-flex .justify-content-between .align-items-center .mb-2}
+###### STL - Pune, India {.card-subtitle .mb-0}
+[Jun 2018 – May 2021]{.text-muted}
+:::
 
 - Built near real-time data pipelines to migrate on-prem databases (Oracle, SAP and Salesforce) to BigQuery, enabling efficient analytics and processing approximately 1 TB of data.
 - Provided Tableau reports and data-driven insights to support business functions, including scrap detection and DOE analysis, driving process improvements and informed decision making.
 - Collaborated with cross-functional teams to ensure effective data usage, driving successful operational outcomes, and achieve business objectives.
-</div>
 
-</div>
+::: {.callout-tip appearance="minimal" icon=false}
+**Key Achievement:** Processed 1 TB of data from multiple enterprise sources
+:::
+:::
+:::
+:::
+:::
 
 
 # Education
 
 ---
 
-<div class="card mb-4 h-100 shadow-sm">
+::: {.card .mb-4 .shadow-sm}
+::: {.card-body}
+##### San Jose State University (SJSU) {.card-title}
 
-<div class="card-body">
-<h5 class="card-title">San Jose State University (SJSU)</h5>
-<div class="d-flex justify-content-between align-items-center mb-2">
-  <h6 class="card-subtitle mb-0">MS, Software Engineering (Data Science)</h6>
-  <small>Aug 2025 – Present</small>
-</div>
-<p>Courses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms</p>
-</div>
+::: {.d-flex .justify-content-between .align-items-center .mb-2}
+###### MS, Software Engineering (Data Science) {.card-subtitle .mb-0}
+[Aug 2025 – Present]{.text-muted}
+:::
 
-</div>
+Courses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms
+:::
+:::
 
-<div class="card mb-4 h-100 shadow-sm">
+::: {.card .mb-4 .shadow-sm}
+::: {.card-body}
+##### College of Engineering Pune (COEP) {.card-title}
 
-<div class="card-body">
-<h5 class="card-title">College of Engineering Pune (COEP)</h5>
-<div class="d-flex justify-content-between align-items-center mb-2">
-  <h6 class="card-subtitle mb-0">BS, Computer Engineering</h6>
-  <small>Aug 2014 – May 2018</small>
-</div>
-<p>Courses: Programming, Databases, Algorithms, Software Design</p>
-</div>
+::: {.d-flex .justify-content-between .align-items-center .mb-2}
+###### BS, Computer Engineering {.card-subtitle .mb-0}
+[Aug 2014 – May 2018]{.text-muted}
+:::
 
-</div>
+Courses: Programming, Databases, Algorithms, Software Design
+:::
+:::
 
 
 # Projects
 
 ---
 
-<div class="card mb-4 h-100 shadow-sm">
-<div class="card-body">
-<h5 class="card-title">Philosophy‑based Recommender (LLMs + RAG)</h5>
-<p>Personalized mental‑wellness recommendations using LLMs and RAG over curated philosophical texts. Focus on prompt design, retrieval quality, and safety.</p>
-</div>
-</div>
+::: {.grid}
+::: {.g-col-12 .g-col-md-4}
+::: {.card .h-100 .shadow-sm}
+::: {.card-body}
+##### Philosophy-based Recommender (LLMs + RAG) {.card-title}
 
-<div class="card mb-4 h-100 shadow-sm">
-<div class="card-body">
-<h5 class="card-title">NYC Taxi Fare Prediction (30M rows)</h5>
-<p>Distributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.</p>
-</div>
-</div>
+Personalized mental-wellness recommendations using LLMs and RAG over curated philosophical texts. Focus on prompt design, retrieval quality, and safety.
+:::
+:::
+:::
 
-<div class="card mb-4 h-100 shadow-sm">
-<div class="card-body">
-<h5 class="card-title">GCP Data Pipelines @ Scale</h5>
-<p>Event‑driven pipelines to migrate on‑prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.</p>
-</div>
-</div>
+::: {.g-col-12 .g-col-md-4}
+::: {.card .h-100 .shadow-sm}
+::: {.card-body}
+##### NYC Taxi Fare Prediction (30M rows) {.card-title}
+
+Distributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card .h-100 .shadow-sm}
+::: {.card-body}
+##### GCP Data Pipelines @ Scale {.card-title}
+
+Event-driven pipelines to migrate on-prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.
+:::
+:::
+:::
+:::
