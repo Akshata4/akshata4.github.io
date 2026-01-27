@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content=" From Pipelines to Predictions | Data Engineer Turning AI/ML Builder | SJSU Grad Student  6+ years engineering data at scale, now channeling that into AI/ML. Building LLM-powered apps, experimenting with RAG, and bridging the gap between raw data and intelligent systems.">
+<meta name="description" content="Building a recommender system that suggests items based on similar users’ preferences - the foundation of ‘users who liked this also liked’ features.">
 
-<title>Akshata Madavi</title>
+<title>User-Based Collaborative Filtering</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,30 +24,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f1aadacce99040138bbb613f9330654f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-158753d054d689b5571260288fdf650a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-8bb3cef3b392e5bcb8cb2bec3e978969.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-158753d054d689b5571260288fdf650a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-f1aadacce99040138bbb613f9330654f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-158753d054d689b5571260288fdf650a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-8bb3cef3b392e5bcb8cb2bec3e978969.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-158753d054d689b5571260288fdf650a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -262,35 +260,35 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-bi-list">    
         <li>
-    <a class="dropdown-item" href="./index.html#experience">
+    <a class="dropdown-item" href="../index.html#experience">
  <span class="dropdown-text">Experience</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./index.html#education">
+    <a class="dropdown-item" href="../index.html#education">
  <span class="dropdown-text">Education</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./index.html#projects">
+    <a class="dropdown-item" href="../index.html#projects">
  <span class="dropdown-text">Projects</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./index.html#blogs">
+    <a class="dropdown-item" href="../index.html#blogs">
  <span class="dropdown-text">Blogs</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./study/index.html">
+    <a class="dropdown-item" href="../study/index.html">
  <span class="dropdown-text">What I Learned Today</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text"><b>Akshata Madavi</b></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./assets/resume.pdf"> 
+    <a class="nav-link" href="../assets/resume.pdf"> 
 <span class="menu-text"><b>Resume</b></span></a>
   </li>  
   <li class="nav-item compact">
@@ -317,281 +315,105 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="assets/akshata.jpeg" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Akshata Madavi</h1>
+<h1 class="title">User-Based Collaborative Filtering</h1>
 </div>
+
 <div>
   <div class="description">
-    <br><b>From Pipelines to Predictions | Data Engineer Turning AI/ML Builder | SJSU Grad Student</b> <br><br>6+ years engineering data at scale, now channeling that into AI/ML. Building LLM-powered apps, experimenting with RAG, and bridging the gap between raw data and intelligent systems.
+    Building a recommender system that suggests items based on similar users’ preferences - the foundation of ‘users who liked this also liked’ features.
   </div>
 </div>
+
+
 <div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Monday, the 26th of January, 2026</p>
+    </div>
   </div>
-</header><main class="content" id="quarto-document-content">
+  
+    
+  </div>
+  
 
-<div class="social-buttons text-center mb-4">
-<p><a class="btn btn-outline-secondary social-btn mx-2" href="https://www.linkedin.com/in/akshata-madavi/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> <a class="btn btn-outline-secondary social-btn mx-2" href="https://github.com/akshata4" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Github</a> <a class="btn btn-outline-secondary social-btn mx-2" href="mailto:akshatamadavi@gmail.com"><i class="fa-regular fa-envelope"></i> Email</a></p>
-</div>
-<section id="experience" class="level1">
-<h1>Experience</h1>
-<hr>
-<div class="card mb-4 shadow-sm">
-<div class="card-body">
-<div class="grid">
-<div class="g-col-1">
-<p><a href="assets/ltim-logo.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="assets/ltim-logo.jpeg" class="company-logo img-fluid"></a></p>
-</div>
-<section id="senior-data-engineer" class="level5 card-title g-col-11">
-<h5 class="card-title" data-anchor-id="senior-data-engineer">Senior Data Engineer</h5>
-<section id="ltimindtree---pune-india" class="level6 card-subtitle mb-0 d-flex justify-content-between align-items-center mb-2">
-<h6 class="card-subtitle mb-0" data-anchor-id="ltimindtree---pune-india">LTIMindtree - Pune, India</h6>
-<p><span class="text-muted">May 2023 – Mar 2025</span></p>
-</section>
+
+</header>
+
+
+<p>User-based collaborative filtering powers recommendations like “users who liked this also liked…” on Netflix or Amazon. Today, I built a simple version using dummy movie data after finishing content-based filtering earlier.</p>
+<section id="core-concept" class="level2">
+<h2 class="anchored" data-anchor-id="core-concept">Core Concept</h2>
 <ul>
-<li>Developed and optimized near real-time data pipelines to seamlessly migrate on-premises traditional databases to a centralized BigQuery platform, facilitating efficient analytical workloads and insights. Processed approximately 10 million records.</li>
-<li>Designed and implemented an event-driven pipeline to process and load complex, inconsistent data from multiple Excel sheets into GCP, reducing processing time from a week to under 10 minutes with parallel processing of 30 GB.</li>
-<li>Established orchestration using Google Workflow to ensure smooth execution and management of data pipelines.</li>
+<li>This method assumes similar users share tastes</li>
+<li>Finds “neighbors” for a target user</li>
+<li>Suggests items those neighbors rated highly but the target hasn’t seen</li>
 </ul>
-<div class="callout callout-style-simple callout-tip no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Key Achievement:</strong> Reduced processing time from 1 week to under 10 minutes</p>
-</div>
-</div>
-</div>
 </section>
-</div>
-</div>
-</div>
-<div class="card mb-4 shadow-sm">
-<div class="card-body">
-<div class="grid">
-<div class="g-col-1">
-<p><a href="assets/aiadv-logo.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="assets/aiadv-logo.jpeg" class="company-logo img-fluid"></a></p>
-</div>
-<section id="data-engineer" class="level5 card-title g-col-11">
-<h5 class="card-title" data-anchor-id="data-engineer">Data Engineer</h5>
-<section id="ai-adventures---pune-india" class="level6 card-subtitle mb-0 d-flex justify-content-between align-items-center mb-2">
-<h6 class="card-subtitle mb-0" data-anchor-id="ai-adventures---pune-india">AI Adventures - Pune, India</h6>
-<p><span class="text-muted">Aug 2021 – Apr 2023</span></p>
-</section>
+<section id="implementation-steps" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-steps">Implementation Steps</h2>
 <ul>
-<li>Led migration of course data from Moodle to MySQL, enabling business intelligence views that drove a 20% increase in revenue.</li>
-<li>Expanded insights into sales, student retention, and curriculum performance, improving data-informed decisions across the organization.</li>
+<li>Created a user-item matrix (rows=users, columns=movies, cells=ratings 1-5)</li>
+<li>Computed user-user similarity matrix using cosine similarity</li>
+<li>Identified top similar users (neighbors) for the target user</li>
+<li>Recommended unseen movies from neighbors’ high-rated lists, weighted by similarity</li>
 </ul>
-<div class="callout callout-style-simple callout-tip no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Key Achievement:</strong> Drove 20% increase in revenue through BI views</p>
-</div>
-</div>
-</div>
+<p><strong>Check my code:</strong> <a href="https://github.com/Akshata4/how-recommenders-work/blob/main/simple-recommender.ipynb">simple-recommender.ipynb</a></p>
 </section>
-</div>
-</div>
-</div>
-<div class="card mb-4 shadow-sm">
-<div class="card-body">
-<div class="grid">
-<div class="g-col-1">
-<p><a href="assets/stl-logo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="assets/stl-logo.png" class="company-logo img-fluid"></a></p>
-</div>
-<section id="data-engineer-1" class="level5 card-title g-col-11">
-<h5 class="card-title" data-anchor-id="data-engineer-1">Data Engineer</h5>
-<section id="stl---pune-india" class="level6 card-subtitle mb-0 d-flex justify-content-between align-items-center mb-2">
-<h6 class="card-subtitle mb-0" data-anchor-id="stl---pune-india">STL - Pune, India</h6>
-<p><span class="text-muted">Jun 2018 – May 2021</span></p>
+<section id="quick-example" class="level2">
+<h2 class="anchored" data-anchor-id="quick-example">Quick Example</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>User</th>
+<th>Movie1</th>
+<th>Movie2</th>
+<th>Movie3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>5</td>
+<td>?</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>User A is similar to B (both love Movie1/3), so recommend Movie2 (B’s 5-star pick).</p>
 </section>
+<section id="why-it-excites-me" class="level2">
+<h2 class="anchored" data-anchor-id="why-it-excites-me">Why It Excites Me</h2>
 <ul>
-<li>Built near real-time data pipelines to migrate on-prem databases (Oracle, SAP and Salesforce) to BigQuery, enabling efficient analytics and processing approximately 1 TB of data.</li>
-<li>Provided Tableau reports and data-driven insights to support business functions, including scrap detection and DOE analysis, driving process improvements and informed decision making.</li>
-<li>Collaborated with cross-functional teams to ensure effective data usage, driving successful operational outcomes, and achieve business objectives.</li>
+<li>Bridges to real-world systems like Netflix/Amazon</li>
+<li>Next up: matrix factorization, handling sparsity</li>
+<li>Hands-on dummy data clarified “wisdom of the crowd” magic!</li>
 </ul>
-<div class="callout callout-style-simple callout-tip no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Key Achievement:</strong> Processed 1 TB of data from multiple enterprise sources</p>
-</div>
-</div>
-</div>
-</section>
-</div>
-</div>
-</div>
-</section>
-<section id="education" class="level1">
-<h1>Education</h1>
-<hr>
-<div class="card mb-4 shadow-sm">
-<div class="card-body">
-<div class="grid">
-<div class="g-col-1">
-<p><a href="assets/sjsu-logo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="assets/sjsu-logo.png" class="company-logo img-fluid"></a></p>
-</div>
-<section id="san-jose-state-university-sjsu" class="level5 card-title g-col-11">
-<h5 class="card-title" data-anchor-id="san-jose-state-university-sjsu">San Jose State University (SJSU)</h5>
-<section id="ms-software-engineering-data-science" class="level6 card-subtitle mb-0 d-flex justify-content-between align-items-center mb-2">
-<h6 class="card-subtitle mb-0" data-anchor-id="ms-software-engineering-data-science">MS, Software Engineering (Data Science)</h6>
-<p><span class="text-muted">Aug 2025 – Present</span></p>
-</section>
-<p>Courses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms</p>
-</section>
-</div>
-</div>
-</div>
-<div class="card mb-4 shadow-sm">
-<div class="card-body">
-<div class="grid">
-<div class="g-col-1">
-<p><a href="assets/coep-logo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="assets/coep-logo.png" class="company-logo img-fluid"></a></p>
-</div>
-<section id="college-of-engineering-pune-coep" class="level5 card-title g-col-11">
-<h5 class="card-title" data-anchor-id="college-of-engineering-pune-coep">College of Engineering Pune (COEP)</h5>
-<section id="bs-computer-engineering" class="level6 card-subtitle mb-0 d-flex justify-content-between align-items-center mb-2">
-<h6 class="card-subtitle mb-0" data-anchor-id="bs-computer-engineering">BS, Computer Engineering</h6>
-<p><span class="text-muted">Aug 2014 – May 2018</span></p>
-</section>
-<p>Courses: Programming, Databases, Algorithms, Software Design</p>
-</section>
-</div>
-</div>
-</div>
-</section>
-<section id="projects" class="level1">
-<h1>Projects</h1>
-<hr>
-<div class="grid">
-<div class="g-col-12 g-col-md-4">
-<div class="card h-100 shadow-sm">
-<img src="assets/vital-watch.png" class="project-thumbnail">
-<div class="card-body">
-<h5 class="card-title" data-anchor-id="projects">
-<a href="https://github.com/Akshata4/vital-watch" target="_blank">Vital Watch</a>
-</h5>
-<p>
-Real-time health monitoring system that tracks vital signs and provides early warning alerts for critical health conditions.
-</p>
-</div>
-</div>
-</div>
-<div class="g-col-12 g-col-md-4">
-<div class="card h-100 shadow-sm">
-<img src="assets/ai-governance.png" class="project-thumbnail">
-<div class="card-body">
-<h5 class="card-title">
-<a href="https://github.com/Akshata4/ai_governance" target="_blank">AI Governance</a>
-</h5>
-<p>
-Chrome extension + local Ollama backend to detect and redact sensitive data in LLM prompts before submission.
-</p>
-</div>
-</div>
-</div>
-<div class="g-col-12 g-col-md-4">
-<div class="card h-100 shadow-sm">
-<img src="assets/smart-study.png" class="project-thumbnail">
-<div class="card-body">
-<h5 class="card-title">
-<a href="https://github.com/Akshata4/smart-study-companion" target="_blank">Smart Study Companion</a>
-</h5>
-<p>
-AI-powered learning assistant that adapts to each student’s pace, tone, and skill level with interactive conversations.
-</p>
-</div>
-</div>
-</div>
-<div class="g-col-12 g-col-md-4">
-<div class="card h-100 shadow-sm">
-<section id="philosophy-based-recommender-llms-rag" class="level5 card-title card-body">
-<h5 class="card-title" data-anchor-id="philosophy-based-recommender-llms-rag">Philosophy-based Recommender (LLMs + RAG)</h5>
-<p>Personalized mental-wellness recommendations using LLMs and RAG over curated philosophical texts. Focus on prompt design, retrieval quality, and safety.</p>
-</section>
-</div>
-</div>
-<div class="g-col-12 g-col-md-4">
-<div class="card h-100 shadow-sm">
-<section id="nyc-taxi-fare-prediction-30m-rows" class="level5 card-title card-body">
-<h5 class="card-title" data-anchor-id="nyc-taxi-fare-prediction-30m-rows">NYC Taxi Fare Prediction (30M rows)</h5>
-<p>Distributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.</p>
-</section>
-</div>
-</div>
-<div class="g-col-12 g-col-md-4">
-<div class="card h-100 shadow-sm">
-<section id="gcp-data-pipelines-scale" class="level5 card-title card-body">
-<h5 class="card-title" data-anchor-id="gcp-data-pipelines-scale">GCP Data Pipelines @ Scale</h5>
-<p>Event-driven pipelines to migrate on-prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.</p>
-</section>
-</div>
-</div>
-</div>
-</section>
-<section id="blogs" class="level1">
-<h1>Blogs</h1>
-<hr>
-<div class="grid">
-<div class="g-col-12 g-col-md-6">
-<div class="card h-100 shadow-sm">
-<div class="card-body">
-<div class="grid">
-<div class="g-col-3">
-<p><a href="assets/dl-table-problem.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="assets/dl-table-problem.webp" class="blog-thumbnail img-fluid"></a></p>
-</div>
-<section id="deep-learnings-blind-spot-the-table-problem" class="level5 card-title g-col-9">
-<h5 class="card-title" data-anchor-id="deep-learnings-blind-spot-the-table-problem"><a href="https://medium.com/@akshatamadavi/deep-learnings-blind-spot-the-table-problem-a91150a38369" target="_blank">Deep Learning’s Blind Spot: The Table Problem</a></h5>
-<p>Exploring why deep learning models struggle with tabular data and when traditional ML methods still outperform neural networks.</p>
-</section>
-</div>
-</div>
-</div>
-</div>
-<div class="g-col-12 g-col-md-6">
-<div class="card h-100 shadow-sm">
-<div class="card-body">
-<div class="grid">
-<div class="g-col-3">
-<p><a href="assets/lung-cancer.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="assets/lung-cancer.webp" class="blog-thumbnail img-fluid"></a></p>
-</div>
-<section id="catching-risk-early-a-recall-first-lung-cancer-classifier" class="level5 card-title g-col-9">
-<h5 class="card-title" data-anchor-id="catching-risk-early-a-recall-first-lung-cancer-classifier"><a href="https://medium.com/@akshatamadavi/catching-risk-early-a-recall-first-lung-cancer-classifier-in-8-steps-crisp-dm-scikit-learn-d39973b5c69d" target="_blank">Catching Risk Early: A Recall-First Lung Cancer Classifier</a></h5>
-<p>Building a lung cancer classifier using CRISP-DM methodology and Scikit-learn, prioritizing recall to minimize missed diagnoses.</p>
-</section>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="what-i-learned-today" class="level1">
-<h1>What I Learned Today</h1>
-<hr>
-<div class="card mb-4 shadow-sm">
-<div class="card-body">
-<p>Daily learnings and notes from my journey in AI/ML, data science, and software engineering. Each note captures a concept, technique, or insight from my studies.</p>
-<div class="text-center mt-3">
-<p><a href="./study/index.html" class="btn btn-outline-primary">View All Study Notes →</a></p>
-</div>
-</div>
-</div>
+<p>Feeling pumped to keep exploring recommender systems!</p>
 
 
 </section>
-</main>  
-</div>
- <!-- /main -->
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -607,6 +429,13 @@ AI-powered learning assistant that adapts to each student’s pace, tone, and sk
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -1091,38 +920,6 @@ AI-powered learning assistant that adapts to each student’s pace, tone, and sk
     }
   });
 </script>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 
