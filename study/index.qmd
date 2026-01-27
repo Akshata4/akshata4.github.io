@@ -1,0 +1,17 @@
+---
+title: "What I Learned Today"
+description: "Daily learnings and notes from my journey in AI/ML, data science, and software engineering"
+listing:
+  contents: "*.md"
+  sort: "date desc"
+  type: grid
+  categories: false
+  fields: [title, description, date]
+  feed: false
+  filter-ui: false
+  sort-ui: false
+page-layout: full
+title-block-banner: true
+---
+
+A collection of things I learn as I explore AI/ML, recommender systems, data engineering, and more. Each note captures a concept, technique, or insight from my daily studies.

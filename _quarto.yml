@@ -17,6 +17,8 @@ website:
             href: index.qmd#projects
           - text: "Blogs"
             href: index.qmd#blogs
+          - text: "What I Learned Today"
+            href: study/index.qmd
       - text: "<b>Akshata Madavi</b>"
         href: index.qmd
     right:

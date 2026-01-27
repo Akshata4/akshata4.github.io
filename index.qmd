@@ -246,3 +246,18 @@ Building a lung cancer classifier using CRISP-DM methodology and Scikit-learn, p
 :::
 :::
 :::
+
+
+# What I Learned Today
+
+---
+
+::: {.card .mb-4 .shadow-sm}
+::: {.card-body}
+Daily learnings and notes from my journey in AI/ML, data science, and software engineering. Each note captures a concept, technique, or insight from my studies.
+
+::: {.text-center .mt-3}
+<a href="study/index.qmd" class="btn btn-outline-primary">View All Study Notes →</a>
+:::
+:::
+:::
