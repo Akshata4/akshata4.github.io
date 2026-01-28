@@ -1,38 +1,87 @@
 [
   {
-    "objectID": "study/user-based-cf.html",
-    "href": "study/user-based-cf.html",
-    "title": "User-Based Collaborative Filtering",
+    "objectID": "study/item-based-cf.html",
+    "href": "study/item-based-cf.html",
+    "title": "Item-Based Collaborative Filtering",
     "section": "",
-    "text": "User-based collaborative filtering powers recommendations like “users who liked this also liked…” on Netflix or Amazon. Today, I built a simple version using dummy movie data after finishing content-based filtering earlier."
+    "text": "Overview\nKey Concepts\nAlgorithm Steps\nImplementation\nExamples & Calculations\nAdvantages & Disadvantages\n\n\n\n\n\nItem-Based Collaborative Filtering is a recommendation technique that recommends items to users based on the similarity between items.\n\n\n\nInstead of finding similar users (user-based CF), we find similar items\nIf a user liked item A, and item B is similar to item A, recommend item B\nSimilarity is computed based on user ratings patterns\n\n\n\n\n\nWorks well when the number of users &gt;&gt; number of items\nItem similarities are relatively stable over time\nGood for e-commerce, movie recommendations, music recommendations\n\n\n\n\n\n\n\n\nA matrix where: - Rows = Users - Columns = Items (e.g., movies) - Values = Ratings given by users to items - Missing values = Items not rated by users (filled with 0)\n\n\n\nalt text\n\n\n\n\n\nA matrix that captures how similar each item is to every other item: - Rows = Items - Columns = Items - Values = Similarity scores (typically 0 to 1) - Diagonal = 1 (item is identical to itself)\nSimilarity Metrics: - Cosine Similarity: Measures the cosine of angle between item rating vectors similarity(A, B) = (A · B) / (||A|| × ||B||) - Other options: Pearson correlation, Euclidean distance\n\n\n\nalt text\n\n\n\n\n\n\n\n\n\nCreate a matrix from user ratings data with users as rows and items as columns.\n\n\n\nCalculate similarity between all pairs of items based on user ratings patterns. - Transpose the user-item matrix (items become rows) - Apply cosine similarity to compute item-item similarities\n\n\n\nFor predicting user u’s rating on candidate item m:\n\nFind rated items: Get all items that user u has rated\nFind similar items: Get similarity scores between candidate item m and items rated by u\nCalculate weighted average:\npredicted_rating(u, m) = Σ(similarity(m, i) × rating(u, i)) / Σ(similarity(m, i))\nWhere i = each item rated by user u\n\n\n\n\n\nIdentify all unrated items for the user (candidate items)\nPredict ratings for each candidate item\nSort by predicted rating (descending)\nReturn top N items\n\n\n\n\n\n\n\n\n# Sample data\nuser_item_rating = pd.DataFrame({\n    \"user_id\": [1, 1, 1, 2, 2, 3, 3, 4],\n    \"movie_id\": [101, 102, 103, 101, 104, 102, 105, 103],\n    \"rating\": [5, 4, 3, 4, 5, 2, 3, 4],\n})\n\n\n\nuser_item_matrix = user_item_rating.pivot_table(\n    index=\"user_id\",\n    columns=\"movie_id\",\n    values=\"rating\"\n).fillna(0)\n\n\n\nfrom sklearn.metrics.pairwise import cosine_similarity\n\nitem_item_similarity = pd.DataFrame(\n    cosine_similarity(user_item_matrix.T),  # Transpose: items as rows\n    index=user_item_matrix.columns,\n    columns=user_item_matrix.columns,\n)\n\n\n\ndef predict_rating(user_id, movie_id, user_item_matrix, item_similarity_matrix):\n    \"\"\"\n    Predict rating for a user-movie pair using item-based collaborative filtering.\n\n    Algorithm:\n    1. Get all movies rated by user 'u'\n    2. For candidate movie 'm', find similarity with all movies rated by 'u'\n    3. Calculate weighted average: Σ(similarity(m,i) * rating(u,i)) / Σ(similarity(m,i))\n    \"\"\"\n    # Step 1: Get all movies rated by the user\n    user_ratings = user_item_matrix.loc[user_id]\n    rated_movies = user_ratings[user_ratings &gt; 0]\n\n    # Step 2: Get similarity scores between candidate movie and all movies rated by user\n    movie_similarities = item_similarity_matrix.loc[movie_id, rated_movies.index]\n\n    # Step 3: Filter out movies with zero or negative similarity\n    movie_similarities = movie_similarities[movie_similarities &gt; 0]\n\n    # If no similar movies found, return 0\n    if len(movie_similarities) == 0:\n        return 0\n\n    # Step 4: Calculate weighted average\n    weighted_sum = sum(movie_similarities * rated_movies[movie_similarities.index])\n    similarity_sum = sum(movie_similarities)\n    predicted_rating = weighted_sum / similarity_sum\n\n    return predicted_rating\n\n\n\ndef recommend_movies(user_id, user_item_matrix, item_similarity_matrix, top_n=5):\n    \"\"\"\n    Recommend top N movies for a user.\n    \"\"\"\n    all_movies = user_item_matrix.columns\n    user_ratings = user_item_matrix.loc[user_id]\n    rated_movies = user_ratings[user_ratings &gt; 0].index\n    candidate_movies = [m for m in all_movies if m not in rated_movies]\n\n    predictions = []\n    for movie_id in candidate_movies:\n        predicted_rating = predict_rating(user_id, movie_id, user_item_matrix, item_similarity_matrix)\n        predictions.append({'movie_id': movie_id, 'predicted_rating': predicted_rating})\n\n    recommendations = pd.DataFrame(predictions)\n    recommendations = recommendations.sort_values('predicted_rating', ascending=False).head(top_n)\n    return recommendations.reset_index(drop=True)\n\n\n\n\n\n\n\nUser-Item Rating Data:\n   user_id  movie_id  rating\n0        1       101       5\n1        1       102       4\n2        1       103       3\n3        2       101       4\n4        2       104       5\n5        3       102       2\n6        3       105       3\n7        4       103       4\nUser-Item Matrix:\nmovie_id  101  102  103  104  105\nuser_id\n1         5.0  4.0  3.0  0.0  0.0\n2         4.0  0.0  0.0  5.0  0.0\n3         0.0  2.0  0.0  0.0  3.0\n4         0.0  0.0  4.0  0.0  0.0\n\n\n\nGoal: Predict User 1’s rating for Movie 104\nStep 1: User 1’s rated movies - Movie 101: 5 stars - Movie 102: 4 stars - Movie 103: 3 stars\nStep 2: Similarities between Movie 104 and User 1’s rated movies\nsimilarity(104, 101) = 0.625\nsimilarity(104, 102) = 0.000\nsimilarity(104, 103) = 0.000\nStep 3: Calculate weighted average\nNumerator (weighted_sum):\n  = (0.625 × 5) + (0.000 × 4) + (0.000 × 3)\n  = 3.125 + 0 + 0\n  = 3.125\n\nDenominator (similarity_sum):\n  = 0.625 + 0.000 + 0.000\n  = 0.625\n\nPredicted Rating:\n  = 3.125 / 0.625\n  = 5.0\nInterpretation: Since Movie 104 is only similar to Movie 101 (which User 1 rated 5 stars), the predicted rating is 5.0 stars.\n\n\n\nalt text\n\n\n\n\n\nWhy Weighted? - Movies MORE similar to the candidate movie get MORE influence in the prediction - Movies LESS similar get LESS influence - Zero similarity = no influence at all\nFormula Breakdown:\npredicted_rating(u, m) = Σ(similarity(m, i) × rating(u, i)) / Σ(similarity(m, i))\n                         ─────────────────────────────────   ──────────────────\n                                weighted contributions         normalization\nExample with Multiple Similar Items: If User 1 is rating Movie X, and: - Movie A (rated 5 stars) has similarity 0.8 to Movie X - Movie B (rated 3 stars) has similarity 0.2 to Movie X\nPrediction = (0.8 × 5 + 0.2 × 3) / (0.8 + 0.2)\n           = (4.0 + 0.6) / 1.0\n           = 4.6 stars\nMovie A has more weight because it’s more similar!\n\n\n\n\n\n\n\n\nScalability: Item-item similarities are stable, can be precomputed\nInterpretability: Easy to explain why an item was recommended (“Because you liked X”)\nHandles sparse data: Works even when users have rated few items\nQuality: Often produces better recommendations than user-based CF\nStable: Item relationships change slower than user preferences\n\n\n\n\n\nCold Start Problem (New Items): Cannot recommend items with no ratings\nPopularity Bias: Tends to recommend popular items\nLimited Diversity: Recommends similar items to what user already liked\nScalability (Items): Doesn’t scale well when number of items is massive\nStatic Similarities: Doesn’t capture changing item relationships easily\nNo New Discoveries: Struggles to recommend items from different categories\n\n\n\n\n\n\n\n\n\n\n\n\nAspect\nItem-Based CF\nUser-Based CF\n\n\n\n\nBest for\nMore users than items\nMore items than users\n\n\nStability\nItem similarities stable\nUser preferences change\n\n\nComputation\nPrecompute item similarities\nCompute user similarities on-the-fly\n\n\nExplanation\n“Users who liked X also liked Y”\n“Users similar to you liked Y”\n\n\nExample\nAmazon products, Netflix movies\nSmall communities, news articles\n\n\n\n\n\n\n\n\n# Predict rating for User 1, Movie 104\npredicted = predict_rating(1, 104, user_item_matrix, item_item_similarity)\nprint(f\"Predicted rating: {predicted:.3f}\")\n\n# Get top 3 recommendations for User 1\nrecommendations = recommend_movies(1, user_item_matrix, item_item_similarity, top_n=3)\nprint(recommendations)\n\n\n\nalt text\n\n\n\n\n\n\n\nItem-based CF recommends items based on item similarity, not user similarity\nThe weighted average formula gives more weight to similar items\nCosine similarity is commonly used to measure item similarity\nPrecomputation of item similarities makes it scalable\nWorks well when items are more stable than user preferences\n\n\n\n\n\n\nUser-Based Collaborative Filtering\nMatrix Factorization (SVD, ALS)\nContent-Based Filtering\nHybrid Recommender Systems\nDeep Learning for Recommendations (Neural Collaborative Filtering)\n\n\nNotebook: item_based_CF(simple).ipynb\nDate: 2026-01-27"
   },
   {
-    "objectID": "study/user-based-cf.html#core-concept",
-    "href": "study/user-based-cf.html#core-concept",
-    "title": "User-Based Collaborative Filtering",
-    "section": "Core Concept",
-    "text": "Core Concept\n\nThis method assumes similar users share tastes\nFinds “neighbors” for a target user\nSuggests items those neighbors rated highly but the target hasn’t seen"
+    "objectID": "study/item-based-cf.html#table-of-contents",
+    "href": "study/item-based-cf.html#table-of-contents",
+    "title": "Item-Based Collaborative Filtering",
+    "section": "",
+    "text": "Overview\nKey Concepts\nAlgorithm Steps\nImplementation\nExamples & Calculations\nAdvantages & Disadvantages"
   },
   {
-    "objectID": "study/user-based-cf.html#implementation-steps",
-    "href": "study/user-based-cf.html#implementation-steps",
-    "title": "User-Based Collaborative Filtering",
-    "section": "Implementation Steps",
-    "text": "Implementation Steps\n\nCreated a user-item matrix (rows=users, columns=movies, cells=ratings 1-5)\nComputed user-user similarity matrix using cosine similarity\nIdentified top similar users (neighbors) for the target user\nRecommended unseen movies from neighbors’ high-rated lists, weighted by similarity\n\nCheck my code: simple-recommender.ipynb"
+    "objectID": "study/item-based-cf.html#overview",
+    "href": "study/item-based-cf.html#overview",
+    "title": "Item-Based Collaborative Filtering",
+    "section": "",
+    "text": "Item-Based Collaborative Filtering is a recommendation technique that recommends items to users based on the similarity between items.\n\n\n\nInstead of finding similar users (user-based CF), we find similar items\nIf a user liked item A, and item B is similar to item A, recommend item B\nSimilarity is computed based on user ratings patterns\n\n\n\n\n\nWorks well when the number of users &gt;&gt; number of items\nItem similarities are relatively stable over time\nGood for e-commerce, movie recommendations, music recommendations"
   },
   {
-    "objectID": "study/user-based-cf.html#quick-example",
-    "href": "study/user-based-cf.html#quick-example",
-    "title": "User-Based Collaborative Filtering",
-    "section": "Quick Example",
-    "text": "Quick Example\n\n\n\nUser\nMovie1\nMovie2\nMovie3\n\n\n\n\nA\n5\n?\n4\n\n\nB\n4\n5\n4\n\n\nC\n1\n2\n1\n\n\n\nUser A is similar to B (both love Movie1/3), so recommend Movie2 (B’s 5-star pick)."
+    "objectID": "study/item-based-cf.html#key-concepts",
+    "href": "study/item-based-cf.html#key-concepts",
+    "title": "Item-Based Collaborative Filtering",
+    "section": "",
+    "text": "A matrix where: - Rows = Users - Columns = Items (e.g., movies) - Values = Ratings given by users to items - Missing values = Items not rated by users (filled with 0)\n\n\n\nalt text\n\n\n\n\n\nA matrix that captures how similar each item is to every other item: - Rows = Items - Columns = Items - Values = Similarity scores (typically 0 to 1) - Diagonal = 1 (item is identical to itself)\nSimilarity Metrics: - Cosine Similarity: Measures the cosine of angle between item rating vectors similarity(A, B) = (A · B) / (||A|| × ||B||) - Other options: Pearson correlation, Euclidean distance\n\n\n\nalt text"
   },
   {
-    "objectID": "study/user-based-cf.html#why-it-excites-me",
-    "href": "study/user-based-cf.html#why-it-excites-me",
-    "title": "User-Based Collaborative Filtering",
-    "section": "Why It Excites Me",
-    "text": "Why It Excites Me\n\nBridges to real-world systems like Netflix/Amazon\nNext up: matrix factorization, handling sparsity\nHands-on dummy data clarified “wisdom of the crowd” magic!\n\nFeeling pumped to keep exploring recommender systems!"
+    "objectID": "study/item-based-cf.html#algorithm-steps",
+    "href": "study/item-based-cf.html#algorithm-steps",
+    "title": "Item-Based Collaborative Filtering",
+    "section": "",
+    "text": "Create a matrix from user ratings data with users as rows and items as columns.\n\n\n\nCalculate similarity between all pairs of items based on user ratings patterns. - Transpose the user-item matrix (items become rows) - Apply cosine similarity to compute item-item similarities\n\n\n\nFor predicting user u’s rating on candidate item m:\n\nFind rated items: Get all items that user u has rated\nFind similar items: Get similarity scores between candidate item m and items rated by u\nCalculate weighted average:\npredicted_rating(u, m) = Σ(similarity(m, i) × rating(u, i)) / Σ(similarity(m, i))\nWhere i = each item rated by user u\n\n\n\n\n\nIdentify all unrated items for the user (candidate items)\nPredict ratings for each candidate item\nSort by predicted rating (descending)\nReturn top N items"
+  },
+  {
+    "objectID": "study/item-based-cf.html#implementation",
+    "href": "study/item-based-cf.html#implementation",
+    "title": "Item-Based Collaborative Filtering",
+    "section": "",
+    "text": "# Sample data\nuser_item_rating = pd.DataFrame({\n    \"user_id\": [1, 1, 1, 2, 2, 3, 3, 4],\n    \"movie_id\": [101, 102, 103, 101, 104, 102, 105, 103],\n    \"rating\": [5, 4, 3, 4, 5, 2, 3, 4],\n})\n\n\n\nuser_item_matrix = user_item_rating.pivot_table(\n    index=\"user_id\",\n    columns=\"movie_id\",\n    values=\"rating\"\n).fillna(0)\n\n\n\nfrom sklearn.metrics.pairwise import cosine_similarity\n\nitem_item_similarity = pd.DataFrame(\n    cosine_similarity(user_item_matrix.T),  # Transpose: items as rows\n    index=user_item_matrix.columns,\n    columns=user_item_matrix.columns,\n)\n\n\n\ndef predict_rating(user_id, movie_id, user_item_matrix, item_similarity_matrix):\n    \"\"\"\n    Predict rating for a user-movie pair using item-based collaborative filtering.\n\n    Algorithm:\n    1. Get all movies rated by user 'u'\n    2. For candidate movie 'm', find similarity with all movies rated by 'u'\n    3. Calculate weighted average: Σ(similarity(m,i) * rating(u,i)) / Σ(similarity(m,i))\n    \"\"\"\n    # Step 1: Get all movies rated by the user\n    user_ratings = user_item_matrix.loc[user_id]\n    rated_movies = user_ratings[user_ratings &gt; 0]\n\n    # Step 2: Get similarity scores between candidate movie and all movies rated by user\n    movie_similarities = item_similarity_matrix.loc[movie_id, rated_movies.index]\n\n    # Step 3: Filter out movies with zero or negative similarity\n    movie_similarities = movie_similarities[movie_similarities &gt; 0]\n\n    # If no similar movies found, return 0\n    if len(movie_similarities) == 0:\n        return 0\n\n    # Step 4: Calculate weighted average\n    weighted_sum = sum(movie_similarities * rated_movies[movie_similarities.index])\n    similarity_sum = sum(movie_similarities)\n    predicted_rating = weighted_sum / similarity_sum\n\n    return predicted_rating\n\n\n\ndef recommend_movies(user_id, user_item_matrix, item_similarity_matrix, top_n=5):\n    \"\"\"\n    Recommend top N movies for a user.\n    \"\"\"\n    all_movies = user_item_matrix.columns\n    user_ratings = user_item_matrix.loc[user_id]\n    rated_movies = user_ratings[user_ratings &gt; 0].index\n    candidate_movies = [m for m in all_movies if m not in rated_movies]\n\n    predictions = []\n    for movie_id in candidate_movies:\n        predicted_rating = predict_rating(user_id, movie_id, user_item_matrix, item_similarity_matrix)\n        predictions.append({'movie_id': movie_id, 'predicted_rating': predicted_rating})\n\n    recommendations = pd.DataFrame(predictions)\n    recommendations = recommendations.sort_values('predicted_rating', ascending=False).head(top_n)\n    return recommendations.reset_index(drop=True)"
+  },
+  {
+    "objectID": "study/item-based-cf.html#examples-calculations",
+    "href": "study/item-based-cf.html#examples-calculations",
+    "title": "Item-Based Collaborative Filtering",
+    "section": "",
+    "text": "User-Item Rating Data:\n   user_id  movie_id  rating\n0        1       101       5\n1        1       102       4\n2        1       103       3\n3        2       101       4\n4        2       104       5\n5        3       102       2\n6        3       105       3\n7        4       103       4\nUser-Item Matrix:\nmovie_id  101  102  103  104  105\nuser_id\n1         5.0  4.0  3.0  0.0  0.0\n2         4.0  0.0  0.0  5.0  0.0\n3         0.0  2.0  0.0  0.0  3.0\n4         0.0  0.0  4.0  0.0  0.0\n\n\n\nGoal: Predict User 1’s rating for Movie 104\nStep 1: User 1’s rated movies - Movie 101: 5 stars - Movie 102: 4 stars - Movie 103: 3 stars\nStep 2: Similarities between Movie 104 and User 1’s rated movies\nsimilarity(104, 101) = 0.625\nsimilarity(104, 102) = 0.000\nsimilarity(104, 103) = 0.000\nStep 3: Calculate weighted average\nNumerator (weighted_sum):\n  = (0.625 × 5) + (0.000 × 4) + (0.000 × 3)\n  = 3.125 + 0 + 0\n  = 3.125\n\nDenominator (similarity_sum):\n  = 0.625 + 0.000 + 0.000\n  = 0.625\n\nPredicted Rating:\n  = 3.125 / 0.625\n  = 5.0\nInterpretation: Since Movie 104 is only similar to Movie 101 (which User 1 rated 5 stars), the predicted rating is 5.0 stars.\n\n\n\nalt text\n\n\n\n\n\nWhy Weighted? - Movies MORE similar to the candidate movie get MORE influence in the prediction - Movies LESS similar get LESS influence - Zero similarity = no influence at all\nFormula Breakdown:\npredicted_rating(u, m) = Σ(similarity(m, i) × rating(u, i)) / Σ(similarity(m, i))\n                         ─────────────────────────────────   ──────────────────\n                                weighted contributions         normalization\nExample with Multiple Similar Items: If User 1 is rating Movie X, and: - Movie A (rated 5 stars) has similarity 0.8 to Movie X - Movie B (rated 3 stars) has similarity 0.2 to Movie X\nPrediction = (0.8 × 5 + 0.2 × 3) / (0.8 + 0.2)\n           = (4.0 + 0.6) / 1.0\n           = 4.6 stars\nMovie A has more weight because it’s more similar!"
+  },
+  {
+    "objectID": "study/item-based-cf.html#advantages-disadvantages",
+    "href": "study/item-based-cf.html#advantages-disadvantages",
+    "title": "Item-Based Collaborative Filtering",
+    "section": "",
+    "text": "Scalability: Item-item similarities are stable, can be precomputed\nInterpretability: Easy to explain why an item was recommended (“Because you liked X”)\nHandles sparse data: Works even when users have rated few items\nQuality: Often produces better recommendations than user-based CF\nStable: Item relationships change slower than user preferences\n\n\n\n\n\nCold Start Problem (New Items): Cannot recommend items with no ratings\nPopularity Bias: Tends to recommend popular items\nLimited Diversity: Recommends similar items to what user already liked\nScalability (Items): Doesn’t scale well when number of items is massive\nStatic Similarities: Doesn’t capture changing item relationships easily\nNo New Discoveries: Struggles to recommend items from different categories\n\n\n\n\n\n\n\n\n\n\n\n\nAspect\nItem-Based CF\nUser-Based CF\n\n\n\n\nBest for\nMore users than items\nMore items than users\n\n\nStability\nItem similarities stable\nUser preferences change\n\n\nComputation\nPrecompute item similarities\nCompute user similarities on-the-fly\n\n\nExplanation\n“Users who liked X also liked Y”\n“Users similar to you liked Y”\n\n\nExample\nAmazon products, Netflix movies\nSmall communities, news articles"
+  },
+  {
+    "objectID": "study/item-based-cf.html#usage-example",
+    "href": "study/item-based-cf.html#usage-example",
+    "title": "Item-Based Collaborative Filtering",
+    "section": "",
+    "text": "# Predict rating for User 1, Movie 104\npredicted = predict_rating(1, 104, user_item_matrix, item_item_similarity)\nprint(f\"Predicted rating: {predicted:.3f}\")\n\n# Get top 3 recommendations for User 1\nrecommendations = recommend_movies(1, user_item_matrix, item_item_similarity, top_n=3)\nprint(recommendations)\n\n\n\nalt text"
+  },
+  {
+    "objectID": "study/item-based-cf.html#key-takeaways",
+    "href": "study/item-based-cf.html#key-takeaways",
+    "title": "Item-Based Collaborative Filtering",
+    "section": "",
+    "text": "Item-based CF recommends items based on item similarity, not user similarity\nThe weighted average formula gives more weight to similar items\nCosine similarity is commonly used to measure item similarity\nPrecomputation of item similarities makes it scalable\nWorks well when items are more stable than user preferences"
+  },
+  {
+    "objectID": "study/item-based-cf.html#related-topics-to-explore",
+    "href": "study/item-based-cf.html#related-topics-to-explore",
+    "title": "Item-Based Collaborative Filtering",
+    "section": "",
+    "text": "User-Based Collaborative Filtering\nMatrix Factorization (SVD, ALS)\nContent-Based Filtering\nHybrid Recommender Systems\nDeep Learning for Recommendations (Neural Collaborative Filtering)\n\n\nNotebook: item_based_CF(simple).ipynb\nDate: 2026-01-27"
+  },
+  {
+    "objectID": "study/index.html",
+    "href": "study/index.html",
+    "title": "What I Learned Today",
+    "section": "",
+    "text": "A collection of things I learn as I explore AI/ML, recommender systems, data engineering, and more. Each note captures a concept, technique, or insight from my daily studies.\n\n\n\n\n\n\n\n\n\n\n\nItem-Based Collaborative Filtering\n\n\nUnderstanding item-based collaborative filtering: algorithm steps, implementation, and practical examples with cosine similarity\n\n\n\nTuesday, the 27th of January, 2026\n\n\n\n\n\n\n\n\n\n\nUser-Based Collaborative Filtering (Dummy Data)\n\n\nBuilding a recommender system that suggests items based on similar users’ preferences - the foundation of ‘users who liked this also liked’ features.\n\n\n\nMonday, the 26th of January, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -42,10 +91,38 @@
     "text": "LinkedIn  Github  Email\n\n\nExperience\n\n\n\n\n\n\n\n\nSenior Data Engineer\n\nLTIMindtree - Pune, India\nMay 2023 – Mar 2025\n\n\nDeveloped and optimized near real-time data pipelines to seamlessly migrate on-premises traditional databases to a centralized BigQuery platform, facilitating efficient analytical workloads and insights. Processed approximately 10 million records.\nDesigned and implemented an event-driven pipeline to process and load complex, inconsistent data from multiple Excel sheets into GCP, reducing processing time from a week to under 10 minutes with parallel processing of 30 GB.\nEstablished orchestration using Google Workflow to ensure smooth execution and management of data pipelines.\n\n\n\n\n\n\n\nKey Achievement: Reduced processing time from 1 week to under 10 minutes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineer\n\nAI Adventures - Pune, India\nAug 2021 – Apr 2023\n\n\nLed migration of course data from Moodle to MySQL, enabling business intelligence views that drove a 20% increase in revenue.\nExpanded insights into sales, student retention, and curriculum performance, improving data-informed decisions across the organization.\n\n\n\n\n\n\n\nKey Achievement: Drove 20% increase in revenue through BI views\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineer\n\nSTL - Pune, India\nJun 2018 – May 2021\n\n\nBuilt near real-time data pipelines to migrate on-prem databases (Oracle, SAP and Salesforce) to BigQuery, enabling efficient analytics and processing approximately 1 TB of data.\nProvided Tableau reports and data-driven insights to support business functions, including scrap detection and DOE analysis, driving process improvements and informed decision making.\nCollaborated with cross-functional teams to ensure effective data usage, driving successful operational outcomes, and achieve business objectives.\n\n\n\n\n\n\n\nKey Achievement: Processed 1 TB of data from multiple enterprise sources\n\n\n\n\n\n\n\n\n\nEducation\n\n\n\n\n\n\n\n\nSan Jose State University (SJSU)\n\nMS, Software Engineering (Data Science)\nAug 2025 – Present\n\nCourses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms\n\n\n\n\n\n\n\n\n\n\n\nCollege of Engineering Pune (COEP)\n\nBS, Computer Engineering\nAug 2014 – May 2018\n\nCourses: Programming, Databases, Algorithms, Software Design\n\n\n\n\n\n\nProjects\n\n\n\n\n\n\n\nVital Watch\n\n\nReal-time health monitoring system that tracks vital signs and provides early warning alerts for critical health conditions.\n\n\n\n\n\n\n\n\n\nAI Governance\n\n\nChrome extension + local Ollama backend to detect and redact sensitive data in LLM prompts before submission.\n\n\n\n\n\n\n\n\n\nSmart Study Companion\n\n\nAI-powered learning assistant that adapts to each student’s pace, tone, and skill level with interactive conversations.\n\n\n\n\n\n\n\nPhilosophy-based Recommender (LLMs + RAG)\nPersonalized mental-wellness recommendations using LLMs and RAG over curated philosophical texts. Focus on prompt design, retrieval quality, and safety.\n\n\n\n\n\n\nNYC Taxi Fare Prediction (30M rows)\nDistributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.\n\n\n\n\n\n\nGCP Data Pipelines @ Scale\nEvent-driven pipelines to migrate on-prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.\n\n\n\n\n\n\nBlogs\n\n\n\n\n\n\n\n\n\n\nDeep Learning’s Blind Spot: The Table Problem\nExploring why deep learning models struggle with tabular data and when traditional ML methods still outperform neural networks.\n\n\n\n\n\n\n\n\n\n\n\n\n\nCatching Risk Early: A Recall-First Lung Cancer Classifier\nBuilding a lung cancer classifier using CRISP-DM methodology and Scikit-learn, prioritizing recall to minimize missed diagnoses.\n\n\n\n\n\n\n\n\nWhat I Learned Today\n\n\n\nDaily learnings and notes from my journey in AI/ML, data science, and software engineering. Each note captures a concept, technique, or insight from my studies.\n\nView All Study Notes →"
   },
   {
-    "objectID": "study/index.html",
-    "href": "study/index.html",
-    "title": "What I Learned Today",
+    "objectID": "study/user-based-cf.html",
+    "href": "study/user-based-cf.html",
+    "title": "User-Based Collaborative Filtering (Dummy Data)",
     "section": "",
-    "text": "A collection of things I learn as I explore AI/ML, recommender systems, data engineering, and more. Each note captures a concept, technique, or insight from my daily studies.\n\n\n\n\n\n\n\n\n\n\n\nUser-Based Collaborative Filtering\n\n\nBuilding a recommender system that suggests items based on similar users’ preferences - the foundation of ‘users who liked this also liked’ features.\n\n\n\nMonday, the 26th of January, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "User-based collaborative filtering powers recommendations like “users who liked this also liked…” on Netflix or Amazon. Today, I built a simple version using dummy movie data after finishing content-based filtering earlier."
+  },
+  {
+    "objectID": "study/user-based-cf.html#core-concept",
+    "href": "study/user-based-cf.html#core-concept",
+    "title": "User-Based Collaborative Filtering (Dummy Data)",
+    "section": "Core Concept",
+    "text": "Core Concept\n\nThis method assumes similar users share tastes\nFinds “neighbors” for a target user\nSuggests items those neighbors rated highly but the target hasn’t seen"
+  },
+  {
+    "objectID": "study/user-based-cf.html#implementation-steps",
+    "href": "study/user-based-cf.html#implementation-steps",
+    "title": "User-Based Collaborative Filtering (Dummy Data)",
+    "section": "Implementation Steps",
+    "text": "Implementation Steps\n\nGathered dummy user-movie ratings data \nCreated a user-item matrix (rows=users, columns=movies, cells=ratings 1-5) \nComputed user-user similarity matrix using cosine similarity \nIdentified top similar users (neighbors) for the target user\nRecommended unseen movies from neighbors’ high-rated lists, weighted by similarity\n\nCheck my code: simple-recommender.ipynb"
+  },
+  {
+    "objectID": "study/user-based-cf.html#quick-example",
+    "href": "study/user-based-cf.html#quick-example",
+    "title": "User-Based Collaborative Filtering (Dummy Data)",
+    "section": "Quick Example",
+    "text": "Quick Example\n\n\n\nUser\nMovie1\nMovie2\nMovie3\n\n\n\n\nA\n5\n?\n4\n\n\nB\n4\n5\n4\n\n\nC\n1\n2\n1\n\n\n\nUser A is similar to B (both love Movie1/3), so recommend Movie2 (B’s 5-star pick)."
+  },
+  {
+    "objectID": "study/user-based-cf.html#why-it-excites-me",
+    "href": "study/user-based-cf.html#why-it-excites-me",
+    "title": "User-Based Collaborative Filtering (Dummy Data)",
+    "section": "Why It Excites Me",
+    "text": "Why It Excites Me\n\nBridges to real-world systems like Netflix/Amazon\nNext up: matrix factorization, handling sparsity\nHands-on dummy data clarified “wisdom of the crowd” magic!\n\nFeeling pumped to keep exploring recommender systems!"
   }
 ]

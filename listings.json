@@ -2,6 +2,7 @@
   {
     "listing": "/study/index.html",
     "items": [
+      "/study/item-based-cf.html",
       "/study/user-based-cf.html"
     ]
   }
