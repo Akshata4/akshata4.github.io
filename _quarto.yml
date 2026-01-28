@@ -25,10 +25,10 @@ website:
       - text: <b>Resume</b>
         href: assets/resume.pdf
       - icon: github
-        href: https://github.com/akshatamadavi
+        href: https://github.com/akshata4
         aria-label: GitHub
       - icon: linkedin
-        href: https://www.linkedin.com/in/akshatamadavi/
+        href: https://www.linkedin.com/in/akshata4/
         aria-label: LinkedIn
   page-footer:
     border: true
