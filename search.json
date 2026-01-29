@@ -1,5 +1,75 @@
 [
   {
+    "objectID": "study/content-based.html",
+    "href": "study/content-based.html",
+    "title": "Content Based Filtering",
+    "section": "",
+    "text": "This item is similar to other based on its attributes. If you liked this item, you might like these similar items.\n\nGather item attribute data (e.g., movie genres, product features)\nCreate item profiles based on attributes\nCreate user profiles based on their item preferences\nRecommend items similar to those the user liked"
+  },
+  {
+    "objectID": "study/content-based.html#core-concept",
+    "href": "study/content-based.html#core-concept",
+    "title": "Content Based Filtering",
+    "section": "",
+    "text": "This item is similar to other based on its attributes. If you liked this item, you might like these similar items.\n\nGather item attribute data (e.g., movie genres, product features)\nCreate item profiles based on attributes\nCreate user profiles based on their item preferences\nRecommend items similar to those the user liked"
+  },
+  {
+    "objectID": "study/content-based.html#implementation-steps",
+    "href": "study/content-based.html#implementation-steps",
+    "title": "Content Based Filtering",
+    "section": "Implementation Steps",
+    "text": "Implementation Steps\n\nGathered dummy item attribute data\n\n\n\n\ndata\n\n\n\nCreated item profiles based on attributes\n\n\n\n\nusing tfidf\n\n\nGeneral Trivia: tfidf.fit_tranform(docs) -&gt; leanrs vocabulary and IDF, returns document-term matrix (sparse matrix, shape(# of docs, # of unique words))\n\nCreated user profiles based on their item preferences\n\n\n\n\nUser profile\n\n\nGeneral Trivia: linear_kernel() -&gt; computes A.B(Transpose) (dot product). This equals to cosine similarity only if all the vectors are L2 normalized to unit length. cosine_similarity() -&gt; explicitly computes cosine similarity and internally handles normalization.\n\nRecommended items similar to those the user liked using cosine similarity\n\n\n\n\nrecommend\n\n\nCheck my code: content-based-recommender.ipynb"
+  },
+  {
+    "objectID": "study/user-based-cf.html",
+    "href": "study/user-based-cf.html",
+    "title": "User-Based Collaborative Filtering (Dummy Data)",
+    "section": "",
+    "text": "User-based collaborative filtering powers recommendations like “users who liked this also liked…” on Netflix or Amazon. Today, I built a simple version using dummy movie data after finishing content-based filtering earlier."
+  },
+  {
+    "objectID": "study/user-based-cf.html#core-concept",
+    "href": "study/user-based-cf.html#core-concept",
+    "title": "User-Based Collaborative Filtering (Dummy Data)",
+    "section": "Core Concept",
+    "text": "Core Concept\n\nThis method assumes similar users share tastes\nFinds “neighbors” for a target user\nSuggests items those neighbors rated highly but the target hasn’t seen"
+  },
+  {
+    "objectID": "study/user-based-cf.html#implementation-steps",
+    "href": "study/user-based-cf.html#implementation-steps",
+    "title": "User-Based Collaborative Filtering (Dummy Data)",
+    "section": "Implementation Steps",
+    "text": "Implementation Steps\n\nGathered dummy user-movie ratings data \nCreated a user-item matrix (rows=users, columns=movies, cells=ratings 1-5) \nComputed user-user similarity matrix using cosine similarity \nIdentified top similar users (neighbors) for the target user\nRecommended unseen movies from neighbors’ high-rated lists, weighted by similarity\n\nCheck my code: simple-recommender.ipynb"
+  },
+  {
+    "objectID": "study/user-based-cf.html#quick-example",
+    "href": "study/user-based-cf.html#quick-example",
+    "title": "User-Based Collaborative Filtering (Dummy Data)",
+    "section": "Quick Example",
+    "text": "Quick Example\n\n\n\nUser\nMovie1\nMovie2\nMovie3\n\n\n\n\nA\n5\n?\n4\n\n\nB\n4\n5\n4\n\n\nC\n1\n2\n1\n\n\n\nUser A is similar to B (both love Movie1/3), so recommend Movie2 (B’s 5-star pick)."
+  },
+  {
+    "objectID": "study/user-based-cf.html#why-it-excites-me",
+    "href": "study/user-based-cf.html#why-it-excites-me",
+    "title": "User-Based Collaborative Filtering (Dummy Data)",
+    "section": "Why It Excites Me",
+    "text": "Why It Excites Me\n\nBridges to real-world systems like Netflix/Amazon\nNext up: matrix factorization, handling sparsity\nHands-on dummy data clarified “wisdom of the crowd” magic!\n\nFeeling pumped to keep exploring recommender systems!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Akshata Madavi",
+    "section": "",
+    "text": "LinkedIn  Github  Email\n\n\nExperience\n\n\n\n\n\n\n\n\nSenior Data Engineer\n\nLTIMindtree - Pune, India\nMay 2023 – Mar 2025\n\n\nDeveloped and optimized near real-time data pipelines to seamlessly migrate on-premises traditional databases to a centralized BigQuery platform, facilitating efficient analytical workloads and insights. Processed approximately 10 million records.\nDesigned and implemented an event-driven pipeline to process and load complex, inconsistent data from multiple Excel sheets into GCP, reducing processing time from a week to under 10 minutes with parallel processing of 30 GB.\nEstablished orchestration using Google Workflow to ensure smooth execution and management of data pipelines.\n\n\n\n\n\n\n\nKey Achievement: Reduced processing time from 1 week to under 10 minutes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineer\n\nAI Adventures - Pune, India\nAug 2021 – Apr 2023\n\n\nLed migration of course data from Moodle to MySQL, enabling business intelligence views that drove a 20% increase in revenue.\nExpanded insights into sales, student retention, and curriculum performance, improving data-informed decisions across the organization.\n\n\n\n\n\n\n\nKey Achievement: Drove 20% increase in revenue through BI views\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineer\n\nSTL - Pune, India\nJun 2018 – May 2021\n\n\nBuilt near real-time data pipelines to migrate on-prem databases (Oracle, SAP and Salesforce) to BigQuery, enabling efficient analytics and processing approximately 1 TB of data.\nProvided Tableau reports and data-driven insights to support business functions, including scrap detection and DOE analysis, driving process improvements and informed decision making.\nCollaborated with cross-functional teams to ensure effective data usage, driving successful operational outcomes, and achieve business objectives.\n\n\n\n\n\n\n\nKey Achievement: Processed 1 TB of data from multiple enterprise sources\n\n\n\n\n\n\n\n\n\nEducation\n\n\n\n\n\n\n\n\nSan Jose State University (SJSU)\n\nMS, Software Engineering (Data Science)\nAug 2025 – Present\n\nCourses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms\n\n\n\n\n\n\n\n\n\n\n\nCollege of Engineering Pune (COEP)\n\nBS, Computer Engineering\nAug 2014 – May 2018\n\nCourses: Programming, Databases, Algorithms, Software Design\n\n\n\n\n\n\nProjects\n\n\n\n\n\n\n\nVital Watch\n\n\nReal-time health monitoring system that tracks vital signs and provides early warning alerts for critical health conditions.\n\n\n\n\n\n\n\n\n\nAI Governance\n\n\nChrome extension + local Ollama backend to detect and redact sensitive data in LLM prompts before submission.\n\n\n\n\n\n\n\n\n\nSmart Study Companion\n\n\nAI-powered learning assistant that adapts to each student’s pace, tone, and skill level with interactive conversations.\n\n\n\n\n\n\n\nPhilosophy-based Recommender (LLMs + RAG)\nPersonalized mental-wellness recommendations using LLMs and RAG over curated philosophical texts. Focus on prompt design, retrieval quality, and safety.\n\n\n\n\n\n\nNYC Taxi Fare Prediction (30M rows)\nDistributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.\n\n\n\n\n\n\nGCP Data Pipelines @ Scale\nEvent-driven pipelines to migrate on-prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.\n\n\n\n\n\n\nBlogs\n\n\n\n\n\n\n\n\n\n\nDeep Learning’s Blind Spot: The Table Problem\nExploring why deep learning models struggle with tabular data and when traditional ML methods still outperform neural networks.\n\n\n\n\n\n\n\n\n\n\n\n\n\nCatching Risk Early: A Recall-First Lung Cancer Classifier\nBuilding a lung cancer classifier using CRISP-DM methodology and Scikit-learn, prioritizing recall to minimize missed diagnoses.\n\n\n\n\n\n\n\n\nWhat I Learned Today\n\n\n\nDaily learnings and notes from my journey in AI/ML, data science, and software engineering. Each note captures a concept, technique, or insight from my studies.\n\nView All Study Notes →"
+  },
+  {
+    "objectID": "study/index.html",
+    "href": "study/index.html",
+    "title": "What I Learned Today",
+    "section": "",
+    "text": "A collection of things I learn as I explore AI/ML, recommender systems, data engineering, and more. Each note captures a concept, technique, or insight from my daily studies.\n\n\n\n\n\n\n\n\n\n\n\nContent Based Filtering\n\n\nBuilding a recommender system that suggests items based on similar items’ attributes - the foundation of ‘items similar to this’ features.\n\n\n\nWednesday, the 28th of January, 2026\n\n\n\n\n\n\n\n\n\n\nItem-Based Collaborative Filtering\n\n\nUnderstanding item-based collaborative filtering: algorithm steps, implementation, and practical examples with cosine similarity\n\n\n\nTuesday, the 27th of January, 2026\n\n\n\n\n\n\n\n\n\n\nUser-Based Collaborative Filtering (Dummy Data)\n\n\nBuilding a recommender system that suggests items based on similar users’ preferences - the foundation of ‘users who liked this also liked’ features.\n\n\n\nMonday, the 26th of January, 2026\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "study/item-based-cf.html",
     "href": "study/item-based-cf.html",
     "title": "Item-Based Collaborative Filtering",
@@ -75,54 +145,5 @@
     "title": "Item-Based Collaborative Filtering",
     "section": "",
     "text": "User-Based Collaborative Filtering\nMatrix Factorization (SVD, ALS)\nContent-Based Filtering\nHybrid Recommender Systems\nDeep Learning for Recommendations (Neural Collaborative Filtering)\n\n\nNotebook: item_based_CF(simple).ipynb\nDate: 2026-01-27"
-  },
-  {
-    "objectID": "study/index.html",
-    "href": "study/index.html",
-    "title": "What I Learned Today",
-    "section": "",
-    "text": "A collection of things I learn as I explore AI/ML, recommender systems, data engineering, and more. Each note captures a concept, technique, or insight from my daily studies.\n\n\n\n\n\n\n\n\n\n\n\nItem-Based Collaborative Filtering\n\n\nUnderstanding item-based collaborative filtering: algorithm steps, implementation, and practical examples with cosine similarity\n\n\n\nTuesday, the 27th of January, 2026\n\n\n\n\n\n\n\n\n\n\nUser-Based Collaborative Filtering (Dummy Data)\n\n\nBuilding a recommender system that suggests items based on similar users’ preferences - the foundation of ‘users who liked this also liked’ features.\n\n\n\nMonday, the 26th of January, 2026\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Akshata Madavi",
-    "section": "",
-    "text": "LinkedIn  Github  Email\n\n\nExperience\n\n\n\n\n\n\n\n\nSenior Data Engineer\n\nLTIMindtree - Pune, India\nMay 2023 – Mar 2025\n\n\nDeveloped and optimized near real-time data pipelines to seamlessly migrate on-premises traditional databases to a centralized BigQuery platform, facilitating efficient analytical workloads and insights. Processed approximately 10 million records.\nDesigned and implemented an event-driven pipeline to process and load complex, inconsistent data from multiple Excel sheets into GCP, reducing processing time from a week to under 10 minutes with parallel processing of 30 GB.\nEstablished orchestration using Google Workflow to ensure smooth execution and management of data pipelines.\n\n\n\n\n\n\n\nKey Achievement: Reduced processing time from 1 week to under 10 minutes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineer\n\nAI Adventures - Pune, India\nAug 2021 – Apr 2023\n\n\nLed migration of course data from Moodle to MySQL, enabling business intelligence views that drove a 20% increase in revenue.\nExpanded insights into sales, student retention, and curriculum performance, improving data-informed decisions across the organization.\n\n\n\n\n\n\n\nKey Achievement: Drove 20% increase in revenue through BI views\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineer\n\nSTL - Pune, India\nJun 2018 – May 2021\n\n\nBuilt near real-time data pipelines to migrate on-prem databases (Oracle, SAP and Salesforce) to BigQuery, enabling efficient analytics and processing approximately 1 TB of data.\nProvided Tableau reports and data-driven insights to support business functions, including scrap detection and DOE analysis, driving process improvements and informed decision making.\nCollaborated with cross-functional teams to ensure effective data usage, driving successful operational outcomes, and achieve business objectives.\n\n\n\n\n\n\n\nKey Achievement: Processed 1 TB of data from multiple enterprise sources\n\n\n\n\n\n\n\n\n\nEducation\n\n\n\n\n\n\n\n\nSan Jose State University (SJSU)\n\nMS, Software Engineering (Data Science)\nAug 2025 – Present\n\nCourses: Data Analytics, Data Mining, Recommender Systems, Enterprise Software Platforms\n\n\n\n\n\n\n\n\n\n\n\nCollege of Engineering Pune (COEP)\n\nBS, Computer Engineering\nAug 2014 – May 2018\n\nCourses: Programming, Databases, Algorithms, Software Design\n\n\n\n\n\n\nProjects\n\n\n\n\n\n\n\nVital Watch\n\n\nReal-time health monitoring system that tracks vital signs and provides early warning alerts for critical health conditions.\n\n\n\n\n\n\n\n\n\nAI Governance\n\n\nChrome extension + local Ollama backend to detect and redact sensitive data in LLM prompts before submission.\n\n\n\n\n\n\n\n\n\nSmart Study Companion\n\n\nAI-powered learning assistant that adapts to each student’s pace, tone, and skill level with interactive conversations.\n\n\n\n\n\n\n\nPhilosophy-based Recommender (LLMs + RAG)\nPersonalized mental-wellness recommendations using LLMs and RAG over curated philosophical texts. Focus on prompt design, retrieval quality, and safety.\n\n\n\n\n\n\nNYC Taxi Fare Prediction (30M rows)\nDistributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.\n\n\n\n\n\n\nGCP Data Pipelines @ Scale\nEvent-driven pipelines to migrate on-prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.\n\n\n\n\n\n\nBlogs\n\n\n\n\n\n\n\n\n\n\nDeep Learning’s Blind Spot: The Table Problem\nExploring why deep learning models struggle with tabular data and when traditional ML methods still outperform neural networks.\n\n\n\n\n\n\n\n\n\n\n\n\n\nCatching Risk Early: A Recall-First Lung Cancer Classifier\nBuilding a lung cancer classifier using CRISP-DM methodology and Scikit-learn, prioritizing recall to minimize missed diagnoses.\n\n\n\n\n\n\n\n\nWhat I Learned Today\n\n\n\nDaily learnings and notes from my journey in AI/ML, data science, and software engineering. Each note captures a concept, technique, or insight from my studies.\n\nView All Study Notes →"
-  },
-  {
-    "objectID": "study/user-based-cf.html",
-    "href": "study/user-based-cf.html",
-    "title": "User-Based Collaborative Filtering (Dummy Data)",
-    "section": "",
-    "text": "User-based collaborative filtering powers recommendations like “users who liked this also liked…” on Netflix or Amazon. Today, I built a simple version using dummy movie data after finishing content-based filtering earlier."
-  },
-  {
-    "objectID": "study/user-based-cf.html#core-concept",
-    "href": "study/user-based-cf.html#core-concept",
-    "title": "User-Based Collaborative Filtering (Dummy Data)",
-    "section": "Core Concept",
-    "text": "Core Concept\n\nThis method assumes similar users share tastes\nFinds “neighbors” for a target user\nSuggests items those neighbors rated highly but the target hasn’t seen"
-  },
-  {
-    "objectID": "study/user-based-cf.html#implementation-steps",
-    "href": "study/user-based-cf.html#implementation-steps",
-    "title": "User-Based Collaborative Filtering (Dummy Data)",
-    "section": "Implementation Steps",
-    "text": "Implementation Steps\n\nGathered dummy user-movie ratings data \nCreated a user-item matrix (rows=users, columns=movies, cells=ratings 1-5) \nComputed user-user similarity matrix using cosine similarity \nIdentified top similar users (neighbors) for the target user\nRecommended unseen movies from neighbors’ high-rated lists, weighted by similarity\n\nCheck my code: simple-recommender.ipynb"
-  },
-  {
-    "objectID": "study/user-based-cf.html#quick-example",
-    "href": "study/user-based-cf.html#quick-example",
-    "title": "User-Based Collaborative Filtering (Dummy Data)",
-    "section": "Quick Example",
-    "text": "Quick Example\n\n\n\nUser\nMovie1\nMovie2\nMovie3\n\n\n\n\nA\n5\n?\n4\n\n\nB\n4\n5\n4\n\n\nC\n1\n2\n1\n\n\n\nUser A is similar to B (both love Movie1/3), so recommend Movie2 (B’s 5-star pick)."
-  },
-  {
-    "objectID": "study/user-based-cf.html#why-it-excites-me",
-    "href": "study/user-based-cf.html#why-it-excites-me",
-    "title": "User-Based Collaborative Filtering (Dummy Data)",
-    "section": "Why It Excites Me",
-    "text": "Why It Excites Me\n\nBridges to real-world systems like Netflix/Amazon\nNext up: matrix factorization, handling sparsity\nHands-on dummy data clarified “wisdom of the crowd” magic!\n\nFeeling pumped to keep exploring recommender systems!"
   }
 ]

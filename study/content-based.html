@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Daily learnings and notes from my journey in AI/ML, data science, and software engineering">
+<meta name="description" content="Building a recommender system that suggests items based on similar items’ attributes - the foundation of ‘items similar to this’ features.">
 
-<title>What I Learned Today</title>
+<title>Content Based Filtering</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -48,6 +46,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-158753d054d689b5571260288fdf650a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-8bb3cef3b392e5bcb8cb2bec3e978969.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-158753d054d689b5571260288fdf650a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,70 +76,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-description','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -303,7 +246,7 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
@@ -370,103 +313,100 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
-      <h1 class="title">What I Learned Today</h1>
-                  <div>
-        <div class="description">
-          Daily learnings and notes from my journey in AI/ML, data science, and software engineering
-        </div>
-      </div>
-                </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Content Based Filtering</h1>
+</div>
+
+<div>
+  <div class="description">
+    Building a recommender system that suggests items based on similar items’ attributes - the foundation of ‘items similar to this’ features.
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Wednesday, the 28th of January, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
-<p>A collection of things I learn as I explore AI/ML, recommender systems, data engineering, and more. Each note captures a concept, technique, or insight from my daily studies.</p>
+</header>
 
 
+<section id="core-concept" class="level2">
+<h2 class="anchored" data-anchor-id="core-concept">Core Concept</h2>
+<p>This item is similar to other based on its attributes. If you liked this item, you might like these similar items.</p>
+<ol type="1">
+<li>Gather item attribute data (e.g., movie genres, product features)</li>
+<li>Create item profiles based on attributes</li>
+<li>Create user profiles based on their item preferences</li>
+<li>Recommend items similar to those the user liked</li>
+</ol>
+</section>
+<section id="implementation-steps" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-steps">Implementation Steps</h2>
+<ul>
+<li>Gathered dummy item attribute data</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="image-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="data"><img src="image-3.png" class="img-fluid figure-img" alt="data"></a></p>
+<figcaption>data</figcaption>
+</figure>
+</div>
+<ul>
+<li>Created item profiles based on attributes</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="image-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="using tfidf"><img src="image-4.png" class="img-fluid figure-img" alt="using tfidf"></a></p>
+<figcaption>using tfidf</figcaption>
+</figure>
+</div>
+<p><code>General Trivia: tfidf.fit_tranform(docs) -&gt; leanrs vocabulary and IDF, returns document-term matrix (sparse matrix, shape(# of docs, # of unique words))</code></p>
+<ul>
+<li>Created user profiles based on their item preferences</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="image-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="User profile"><img src="image-5.png" class="img-fluid figure-img" alt="User profile"></a></p>
+<figcaption>User profile</figcaption>
+</figure>
+</div>
+<p><code>General Trivia: linear_kernel() -&gt; computes A.B(Transpose) (dot product). This equals to cosine similarity only if all the vectors are L2 normalized to unit length. cosine_similarity() -&gt; explicitly computes cosine similarity and internally handles normalization.</code></p>
+<ul>
+<li>Recommended items similar to those the user liked using cosine similarity</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="image-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="recommend"><img src="image-6.png" class="img-fluid figure-img" alt="recommend"></a></p>
+<figcaption>recommend</figcaption>
+</figure>
+</div>
+<p><strong>Check my code:</strong> <a href="https://github.com/Akshata4/how-recommenders-work/blob/main/content-based.ipynb">content-based-recommender.ipynb</a></p>
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1769558400000" data-listing-file-modified-sort="1769660602063" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="140">
-<a href="../study/content-based.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Content Based Filtering
-</h5>
-<div class="card-text listing-description delink">
-<p>Building a recommender system that suggests items based on similar items’ attributes - the foundation of ‘items similar to this’ features.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Wednesday, the 28th of January, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1769472000000" data-listing-file-modified-sort="1769660602064" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1647">
-<a href="../study/item-based-cf.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Item-Based Collaborative Filtering
-</h5>
-<div class="card-text listing-description delink">
-<p>Understanding item-based collaborative filtering: algorithm steps, implementation, and practical examples with cosine similarity</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Tuesday, the 27th of January, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1769385600000" data-listing-file-modified-sort="1769660602064" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="227">
-<a href="../study/user-based-cf.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-User-Based Collaborative Filtering (Dummy Data)
-</h5>
-<div class="card-text listing-description delink">
-<p>Building a recommender system that suggests items based on similar users’ preferences - the foundation of ‘users who liked this also liked’ features.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Monday, the 26th of January, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -973,6 +913,38 @@ Monday, the 26th of January, 2026
     }
   });
 </script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
