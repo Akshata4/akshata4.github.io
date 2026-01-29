@@ -6,21 +6,24 @@ website:
   title: ""
   navbar:
     left:
-      - icon: list
-        aria-label: Sections
-        menu:
-          - text: "Experience"
-            href: index.qmd#experience
-          - text: "Education"
-            href: index.qmd#education
-          - text: "Projects"
-            href: index.qmd#projects
-          - text: "Blogs"
-            href: index.qmd#blogs
-          - text: "What I Learned Today"
-            href: study/index.qmd
       - text: "<b>Akshata Madavi</b>"
         href: index.qmd
+        id: navbar-brand
+      - text: "Experience"
+        href: index.qmd#experience
+        id: nav-item-center
+      - text: "Education"
+        href: index.qmd#education
+        id: nav-item-center
+      - text: "Projects"
+        href: index.qmd#projects
+        id: nav-item-center
+      - text: "Blogs"
+        href: index.qmd#blogs
+        id: nav-item-center
+      - text: "What I Learned Today"
+        href: study/index.qmd
+        id: nav-item-center
     right:
       - text: <b>Resume</b>
         href: assets/resume.pdf

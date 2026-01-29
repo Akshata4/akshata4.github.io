@@ -151,6 +151,7 @@ Courses: Programming, Databases, Algorithms, Software Design
 <div class="card-body">
 <h5 class="card-title"><a href="https://github.com/Akshata4/vital-watch" target="_blank">Vital Watch</a></h5>
 <p>Real-time health monitoring system that tracks vital signs and provides early warning alerts for critical health conditions.</p>
+<p class="text-muted small mb-0"><strong>Tech Stack:</strong> Python, Kafka (Confluent), KSQL, Twilio, ElevenLabs</p>
 </div>
 </div>
 </div>
@@ -161,6 +162,7 @@ Courses: Programming, Databases, Algorithms, Software Design
 <div class="card-body">
 <h5 class="card-title"><a href="https://github.com/Akshata4/ai_governance" target="_blank">AI Governance</a></h5>
 <p>Chrome extension + local Ollama backend to detect and redact sensitive data in LLM prompts before submission.</p>
+<p class="text-muted small mb-0"><strong>Tech Stack:</strong> JavaScript, Chrome Extension, OpenAI, Ollama</p>
 </div>
 </div>
 </div>
@@ -171,39 +173,10 @@ Courses: Programming, Databases, Algorithms, Software Design
 <div class="card-body">
 <h5 class="card-title"><a href="https://github.com/Akshata4/smart-study-companion" target="_blank">Smart Study Companion</a></h5>
 <p>AI-powered learning assistant that adapts to each student's pace, tone, and skill level with interactive conversations.</p>
+<p class="text-muted small mb-0"><strong>Tech Stack:</strong> Python, LangChain</p>
 </div>
 </div>
 </div>
-
-::: {.g-col-12 .g-col-md-4}
-::: {.card .h-100 .shadow-sm}
-::: {.card-body}
-##### Philosophy-based Recommender (LLMs + RAG) {.card-title}
-
-Personalized mental-wellness recommendations using LLMs and RAG over curated philosophical texts. Focus on prompt design, retrieval quality, and safety.
-:::
-:::
-:::
-
-::: {.g-col-12 .g-col-md-4}
-::: {.card .h-100 .shadow-sm}
-::: {.card-body}
-##### NYC Taxi Fare Prediction (30M rows) {.card-title}
-
-Distributed PySpark ML pipeline, engineered geospatial/time features, trained GBTs, and tracked experiments with MLflow.
-:::
-:::
-:::
-
-::: {.g-col-12 .g-col-md-4}
-::: {.card .h-100 .shadow-sm}
-::: {.card-body}
-##### GCP Data Pipelines @ Scale {.card-title}
-
-Event-driven pipelines to migrate on-prem to BigQuery (10M+ records) and process 30GB Excel inputs in minutes using parallelism.
-:::
-:::
-:::
 :::
 
 

@@ -109,3 +109,42 @@ $input-bg: #F6F1FF;
   object-fit: cover;
   border-radius: 0.75rem 0.75rem 0 0;
 }
+
+/* Navbar three-column layout */
+.navbar .container-fluid {
+  position: relative;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Left - Brand only */
+.navbar .me-auto .nav-item:first-child {
+  position: relative;
+  z-index: 10;
+}
+
+/* Center - Navigation items */
+.navbar .me-auto .nav-item:not(:first-child) {
+  position: absolute;
+  left: 50%;
+  transform: translateX(calc(-50% + var(--offset, 0px)));
+  white-space: nowrap;
+}
+
+/* Equal 120px spacing between items */
+.navbar .me-auto .nav-item:nth-child(2) { --offset: -240px; }
+.navbar .me-auto .nav-item:nth-child(3) { --offset: -120px; }
+.navbar .me-auto .nav-item:nth-child(4) { --offset: 0px; }
+.navbar .me-auto .nav-item:nth-child(5) { --offset: 120px; }
+.navbar .me-auto .nav-item:nth-child(6) { --offset: 240px; }
+
+/* Right - Resume and icons */
+.navbar .navbar-nav:not(.me-auto) {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-left: auto;
+  position: relative;
+  z-index: 10;
+}
