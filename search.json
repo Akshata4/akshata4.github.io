@@ -49,27 +49,6 @@
     "text": "Why It Excites Me\n\nBridges to real-world systems like Netflix/Amazon\nNext up: matrix factorization, handling sparsity\nHands-on dummy data clarified “wisdom of the crowd” magic!\n\nFeeling pumped to keep exploring recommender systems!"
   },
   {
-    "objectID": "study/content-based.html",
-    "href": "study/content-based.html",
-    "title": "Content Based Filtering",
-    "section": "",
-    "text": "This item is similar to other based on its attributes. If you liked this item, you might like these similar items.\n\nGather item attribute data (e.g., movie genres, product features)\nCreate item profiles based on attributes\nCreate user profiles based on their item preferences\nRecommend items similar to those the user liked"
-  },
-  {
-    "objectID": "study/content-based.html#core-concept",
-    "href": "study/content-based.html#core-concept",
-    "title": "Content Based Filtering",
-    "section": "",
-    "text": "This item is similar to other based on its attributes. If you liked this item, you might like these similar items.\n\nGather item attribute data (e.g., movie genres, product features)\nCreate item profiles based on attributes\nCreate user profiles based on their item preferences\nRecommend items similar to those the user liked"
-  },
-  {
-    "objectID": "study/content-based.html#implementation-steps",
-    "href": "study/content-based.html#implementation-steps",
-    "title": "Content Based Filtering",
-    "section": "Implementation Steps",
-    "text": "Implementation Steps\n\nGathered dummy item attribute data\n\n\n\n\ndata\n\n\n\nCreated item profiles based on attributes\n\n\n\n\nusing tfidf\n\n\nGeneral Trivia: tfidf.fit_tranform(docs) -&gt; leanrs vocabulary and IDF, returns document-term matrix (sparse matrix, shape(# of docs, # of unique words))\n\nCreated user profiles based on their item preferences\n\n\n\n\nUser profile\n\n\nGeneral Trivia: linear_kernel() -&gt; computes A.B(Transpose) (dot product). This equals to cosine similarity only if all the vectors are L2 normalized to unit length. cosine_similarity() -&gt; explicitly computes cosine similarity and internally handles normalization.\n\nRecommended items similar to those the user liked using cosine similarity\n\n\n\n\nrecommend\n\n\nCheck my code: content-based-recommender.ipynb"
-  },
-  {
     "objectID": "study/item-based-cf.html",
     "href": "study/item-based-cf.html",
     "title": "Item-Based Collaborative Filtering",
@@ -145,5 +124,26 @@
     "title": "Item-Based Collaborative Filtering",
     "section": "",
     "text": "User-Based Collaborative Filtering\nMatrix Factorization (SVD, ALS)\nContent-Based Filtering\nHybrid Recommender Systems\nDeep Learning for Recommendations (Neural Collaborative Filtering)\n\n\nNotebook: item_based_CF(simple).ipynb\nDate: 2026-01-27"
+  },
+  {
+    "objectID": "study/content-based.html",
+    "href": "study/content-based.html",
+    "title": "Content Based Filtering",
+    "section": "",
+    "text": "This item is similar to other based on its attributes. If you liked this item, you might like these similar items.\n\nGather item attribute data (e.g., movie genres, product features)\nCreate item profiles based on attributes\nCreate user profiles based on their item preferences\nRecommend items similar to those the user liked"
+  },
+  {
+    "objectID": "study/content-based.html#core-concept",
+    "href": "study/content-based.html#core-concept",
+    "title": "Content Based Filtering",
+    "section": "",
+    "text": "This item is similar to other based on its attributes. If you liked this item, you might like these similar items.\n\nGather item attribute data (e.g., movie genres, product features)\nCreate item profiles based on attributes\nCreate user profiles based on their item preferences\nRecommend items similar to those the user liked"
+  },
+  {
+    "objectID": "study/content-based.html#implementation-steps",
+    "href": "study/content-based.html#implementation-steps",
+    "title": "Content Based Filtering",
+    "section": "Implementation Steps",
+    "text": "Implementation Steps\n\nGathered dummy item attribute data\n\n\n\n\ndata\n\n\n\nCreated item profiles based on attributes\n\n\n\n\nusing tfidf\n\n\nGeneral Trivia: tfidf.fit_tranform(docs) -&gt; leanrs vocabulary and IDF, returns document-term matrix (sparse matrix, shape(# of docs, # of unique words))\n\nCreated user profiles based on their item preferences\n\n\n\n\nUser profile\n\n\nGeneral Trivia: linear_kernel() -&gt; computes A.B(Transpose) (dot product). This equals to cosine similarity only if all the vectors are L2 normalized to unit length. cosine_similarity() -&gt; explicitly computes cosine similarity and internally handles normalization.\n\nRecommended items similar to those the user liked using cosine similarity\n\n\n\n\nrecommend\n\n\nCheck my code: content-based-recommender.ipynb"
   }
 ]
