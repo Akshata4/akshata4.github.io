@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Akshata4.github.io/akshata4.github.io/index.html</loc>
-    <lastmod>2026-10-21T18:24:17.420Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Akshata4.github.io/akshata4.github.io/study/content-based.html</loc>
-    <lastmod>2026-10-21T18:24:17.420Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Akshata4.github.io/akshata4.github.io/study/user-based-cf.html</loc>
-    <lastmod>2026-10-21T18:24:17.422Z</lastmod>
+    <loc>https://Akshata4.github.io/akshata4.github.io/study/index.html</loc>
+    <lastmod>2026-10-29T03:01:25.820Z</lastmod>
   </url>
   <url>
     <loc>https://Akshata4.github.io/akshata4.github.io/study/item-based-cf.html</loc>
-    <lastmod>2026-10-21T18:24:17.422Z</lastmod>
+    <lastmod>2026-10-29T03:01:25.820Z</lastmod>
   </url>
   <url>
-    <loc>https://Akshata4.github.io/akshata4.github.io/study/index.html</loc>
-    <lastmod>2026-10-21T18:24:17.422Z</lastmod>
+    <loc>https://Akshata4.github.io/akshata4.github.io/study/user-based-cf.html</loc>
+    <lastmod>2026-10-29T03:01:25.820Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Akshata4.github.io/akshata4.github.io/study/content-based.html</loc>
+    <lastmod>2026-10-29T03:01:25.819Z</lastmod>
   </url>
 </urlset>
