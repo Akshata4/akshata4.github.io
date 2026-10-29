@@ -1,25 +1,19 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - index.html
+    - assets/
 
 website:
   title: ""
   navbar:
     left:
       - text: "<b>Akshata Madavi</b>"
-        href: index.qmd
+        href: index.html
         id: navbar-brand
-      - text: "Experience"
-        href: index.qmd#experience
-        id: nav-item-center
-      - text: "Education"
-        href: index.qmd#education
-        id: nav-item-center
-      - text: "Projects"
-        href: index.qmd#projects
-        id: nav-item-center
-      - text: "Blogs"
-        href: index.qmd#blogs
+      - text: "Home"
+        href: index.html
         id: nav-item-center
       - text: "What I Learned Today"
         href: study/index.qmd
@@ -78,8 +72,8 @@ format:
       - text: |
           <script type="text/javascript">
             document.addEventListener("DOMContentLoaded", function() {
-              const currentYear = new Date().getFullYear();
-              document.getElementById('current-year').textContent = currentYear;
+              const el = document.getElementById('current-year');
+              if (el) el.textContent = new Date().getFullYear();
             });
           </script>
       - text: |
@@ -93,6 +87,3 @@ format:
           </script>
 
 lightbox: auto
-
-
-
